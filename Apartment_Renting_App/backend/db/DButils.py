@@ -54,7 +54,7 @@ def get_all_listings(price_low, price_high, size_low, size_high, distance_low, d
             key) + " OR description LIKE '%{}%'".format(key) + " OR street LIKE '%{}%'".format(
             key) + " OR city LIKE '%{}%'".format(key) + " OR zipcode LIKE '%{}%'".format(key)
     sql_str = sql_str + " ORDER BY create_date"
-    # print(sql_str)
+    print(sql_str)
     cur.execute(sql_str)
     data = cur.fetchall()
     cur.close()
