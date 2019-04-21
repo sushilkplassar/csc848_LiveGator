@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f719d207-fe78-4b20-8ddd-f319045f529b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Apartment_Renting_App.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Apartment_Renting_App.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/db/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/db/connection.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,8 +14,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Apartment_Renting_App$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1555657510262" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Apartment_Renting_App$Flask__backend_app_py_.coverage" NAME="Flask (backend/app.py) Coverage Results" MODIFIED="1551680440387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Apartment_Renting_App$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1554889667484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -51,7 +54,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/admin_dashboard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
+            <state relative-caret-position="323">
               <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
             </state>
           </provider>
@@ -60,8 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/views/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="17" column="39" selection-start-line="11" selection-start-column="2" selection-end-line="17" selection-end-column="39" />
+            <state relative-caret-position="238">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="e#0#110#0" expanded="true" />
               </folding>
@@ -74,11 +77,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-101">
-              <caret line="42" selection-start-line="42" selection-end-line="42" />
+            <state relative-caret-position="748">
+              <caret line="44" column="24" selection-start-line="44" selection-start-column="24" selection-end-line="44" selection-end-column="24" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -86,10 +89,19 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/backend/db/connection.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/db/DButils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
+            <state relative-caret-position="68">
               <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
@@ -98,7 +110,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/models/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="204">
               <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
@@ -198,13 +210,13 @@
         <option value="$PROJECT_DIR$/templates/home_search_single_listing.html" />
         <option value="$PROJECT_DIR$/backend/views/listings.py" />
         <option value="$PROJECT_DIR$/templates/admin_home.html" />
-        <option value="$PROJECT_DIR$/backend/db/connection.py" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/backend/views/dashboard.py" />
         <option value="$PROJECT_DIR$/templates/home_search.html" />
         <option value="$PROJECT_DIR$/backend/db/DButils.py" />
         <option value="$PROJECT_DIR$/templates/admin_dashboard.html" />
         <option value="$PROJECT_DIR$/backend/views/admin.py" />
+        <option value="$PROJECT_DIR$/backend/db/connection.py" />
       </list>
     </option>
   </component>
@@ -232,34 +244,6 @@
               <item name="Apartment_Renting_App" type="b2602c69:ProjectViewProjectNode" />
               <item name="Apartment_Renting_App" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Apartment_Renting_App" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Apartment_Renting_App" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Apartment_Renting_App" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Apartment_Renting_App" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Apartment_Renting_App" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Apartment_Renting_App" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Apartment_Renting_App" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Apartment_Renting_App" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Apartment_Renting_App" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Apartment_Renting_App" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -373,11 +357,12 @@
       <workItem from="1554877855406" duration="4512000" />
       <workItem from="1555464018973" duration="631000" />
       <workItem from="1555549491052" duration="59000" />
+      <workItem from="1555657367288" duration="598000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169094000" />
+    <option name="totallyTimeSpent" value="169692000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -392,12 +377,12 @@
     <frame x="99" y="135" width="1211" height="667" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49892473" visible="true" weight="0.30282292" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49892473" visible="true" weight="0.3079555" />
       <window_info id="Structure" order="1" sideWeight="0.50107527" side_tool="true" weight="0.22701149" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8286334" visible="true" weight="0.30180806" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.82720274" weight="0.30086955" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.77223426" weight="0.3991655" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -407,7 +392,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49924013" weight="0.32962447" />
       <window_info anchor="bottom" id="Database Changes" order="10" sideWeight="0.49964002" weight="0.32967034" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49676025" weight="0.44093406" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.17136659" side_tool="true" visible="true" weight="0.36173913" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.17279726" side_tool="true" visible="true" weight="0.30086955" />
       <window_info anchor="bottom" id="Python Console" order="13" sideWeight="0.49964002" weight="0.32967034" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -582,16 +567,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="300">
-            <caret line="20" column="38" selection-start-line="20" selection-end-line="21" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -599,13 +575,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://153626f0-56fe-464c-949a-f52e5588f3c6/schema/CSC648/table/LISTINGS">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://153626f0-56fe-464c-949a-f52e5588f3c6/schema/CSC648/table/LISTINGS" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3512a166-e81b-4b83-a359-2926fd8645cb/console.sql" />
     <entry file="file://$PROJECT_DIR$/backend/models/listings.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -642,13 +612,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/db/connection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
@@ -711,28 +674,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.5/site-packages/flask/cli.py" />
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/http/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="415" selection-start-line="415" selection-end-line="415" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/http/server.py" />
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.5/site-packages/werkzeug/serving.py" />
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/socketserver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="627" selection-start-line="627" selection-end-line="627" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/threading.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="861" selection-start-line="861" selection-end-line="861" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/socketserver.py" />
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/threading.py" />
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.5/site-packages/werkzeug/local.py" />
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.5/site-packages/mysql/connector/abstracts.py" />
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.5/site-packages/mysql/connector/cursor_cext.py" />
@@ -749,45 +694,52 @@
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.5/site-packages/flask/app.py" />
     <entry file="file://$PROJECT_DIR$/templates/admin_dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="323">
           <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/views/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="17" column="39" selection-start-line="11" selection-start-column="2" selection-end-line="17" selection-end-column="39" />
+        <state relative-caret-position="238">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="e#0#110#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/index.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/backend/db/DButils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
+        <state relative-caret-position="68">
           <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/models/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="204">
           <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/index.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-101">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        <state relative-caret-position="748">
+          <caret line="44" column="24" selection-start-line="44" selection-start-column="24" selection-end-line="44" selection-end-column="24" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/db/connection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
         </state>
       </provider>
     </entry>
