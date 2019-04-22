@@ -36,8 +36,6 @@ def load_user(id):
     return User(id)
 
 
-
-
 @app.route("/", methods=['GET', 'POST'])
 def home():
     data = listings.display_all_listings()
@@ -58,6 +56,9 @@ def search():
     data = listings.display_all_listings()
     return render_template('home_search.html', data = data, current_user = current_user, username = User.get_username(current_user))
 
+    # when hosting on AWS server
+    # Comment the app.run() and
+    # Uncomment the app.run(host='0.0.0.0', port=80, debug=True) -- used for opening ports, and allow connections to website
 
 if __name__ == "__main__":
     app.run()
@@ -65,3 +66,4 @@ if __name__ == "__main__":
     #Toggle app.run() and below app.run(host... when adding to online server.
 
     #app.run(host='0.0.0.0', port=80, debug=True)
+
