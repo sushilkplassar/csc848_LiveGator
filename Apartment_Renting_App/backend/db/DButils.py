@@ -53,8 +53,8 @@ def get_all_listings(price_low, price_high, size_low, size_high, distance_low, d
         sql_str = sql_str + " AND house_name LIKE '%{}%'".format(key) + " OR type LIKE '%{}%'".format(
             key) + " OR description LIKE '%{}%'".format(key) + " OR street LIKE '%{}%'".format(
             key) + " OR city LIKE '%{}%'".format(key) + " OR zipcode LIKE '%{}%'".format(key)
-    sql_str = sql_str + " ORDER BY create_date"
-    print(sql_str)
+    sql_str = sql_str + " ORDER BY create_date DESC"
+    # print(sql_str)
     cur.execute(sql_str)
     data = cur.fetchall()
     cur.close()
@@ -65,7 +65,7 @@ def get_all_listings(price_low, price_high, size_low, size_high, distance_low, d
 def get_listings_by_userid(user_id):
     conn.connect()
     cur = conn.cursor()
-    sql_str = "SELECT * from LISTINGS WHERE landlord_id = %s ORDER BY create_date"
+    sql_str = "SELECT * from LISTINGS WHERE landlord_id = %s ORDER BY create_date DESC"
     cur.execute(sql_str, (user_id, ))
     data = cur.fetchall()
     cur.close()
@@ -75,7 +75,7 @@ def get_listings_by_userid(user_id):
 def get_listing_by_houseid(house_id):
     conn.connect()
     cur = conn.cursor()
-    sql_str = "SELECT * from LISTINGS WHERE house_id = %s ORDER BY create_date"
+    sql_str = "SELECT * from LISTINGS WHERE house_id = %s ORDER BY create_date DESC"
     cur.execute(sql_str, (house_id, ))
     data = cur.fetchall()
     cur.close()
@@ -230,7 +230,7 @@ def block_user(user_id):
 def get_all_to_approve():
     conn.connect()
     cur = conn.cursor()
-    sql_str = "SELECT * from LISTINGS WHERE approved = false ORDER BY create_date"
+    sql_str = "SELECT * from LISTINGS WHERE approved = false ORDER BY create_date DESC"
     cur.execute(sql_str,)
     data = cur.fetchall()
     cur.close()

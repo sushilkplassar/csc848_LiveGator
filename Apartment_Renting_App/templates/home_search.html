@@ -32,7 +32,7 @@
         <li><a href="/about">About</a></li>
         <li><a href="/login">Login</a></li>
         <li><a href="/signup">Signup</a></li>
-        <li><a href="/renter_dashboard">Renter dashboard</a></li>
+        <li><a href="/renter_dashboard">Landlord dashboard</a></li>
         <li><a href="/customer_dashboard">Customer dashboard</a></li>
         {% endif %}
         {% if role == 2%}
@@ -83,6 +83,7 @@
                 <p>Price: {{item.price}}</p>
                 <p>Type: {{item.type}}</p>
                 <p>Size: {{item.size}}</p>
+                <p>Distance: {{item.distance}}</p>
                 <p>Features: {{item.bedroom_count}} bedroom(s), {{item.bathroom_count}} bathroom(s), {{item.parking_count}} parking spot(s)</p>
                 <p>Address: {{item.number}}  {{item.street}}  {{item.city}} {{item.state}} {{item.zipcode}}</p>
                 <p>Description: {{item.description}}</p>
