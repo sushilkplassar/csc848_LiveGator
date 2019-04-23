@@ -1,6 +1,8 @@
 import os
 from flask import Flask, session, request, flash, redirect, render_template, url_for
 from flask_login import LoginManager, login_required, current_user
+from flaskext.couchdb import CouchDBManager, Document, TextField, DateTimeField, ViewField
+from flask_uploads import UploadSet, configure_uploads, IMAGES, UploadNotAllowed
 from flask_restful import Api
 from flask_restful_swagger import swagger
 from backend.views.user import user_endpoints
@@ -34,6 +36,17 @@ login_manager.login_view = '/login'
 @login_manager.user_loader
 def load_user(id):
     return User(id)
+
+
+UPLOADED_PHOTOS_DEST = os.path.join('static', 'photos')
+# COUCHDB_SERVER = 'http://localhost:5000/'
+# COUCHDB_DATABASE = 'flask-photolog'
+app.config.from_object(__name__)
+# app.config.from_envvar('PHOTOLOG_SETTINGS', silent=True)
+uploaded_photos = UploadSet('photos', IMAGES)
+configure_uploads(app, uploaded_photos)
+# manager = listings.manager
+# manager.setup(app)
 
 
 @app.route("/", methods=['GET', 'POST'])

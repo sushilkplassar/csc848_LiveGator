@@ -75,16 +75,16 @@
             <div>
               <div >
                 <a href='/all_listings/{{ item.house_id}}'>
-                  <img class="img-responsive" src="{{ item.image_url }}" height="10%"  ></img>
+                  <img class="img-responsive" src="{{ url_for('static', filename=item.image_url) }}" height="10%"  ></img>
                   <h4> {{item.house_name}}</h4>
                 </a>
               </div>
               <div >
-                <p>price: {{item.price}}</p>
-                <p>type: {{item.type}}</p>
-                <p>size: {{item.size}}</p>
-                <p>features: {{item.bedroom_count}} bedroom(s), {{item.bathroom_count}} bathroom(s), {{item.parking_count}} parking spot(s)</p>
-                <p>address: {{item.number}}  {{item.street}}  {{item.city}} {{item.state}} {{item.zipcode}}</p>
+                <p>Price: {{item.price}}</p>
+                <p>Type: {{item.type}}</p>
+                <p>Size: {{item.size}}</p>
+                <p>Features: {{item.bedroom_count}} bedroom(s), {{item.bathroom_count}} bathroom(s), {{item.parking_count}} parking spot(s)</p>
+                <p>Address: {{item.number}}  {{item.street}}  {{item.city}} {{item.state}} {{item.zipcode}}</p>
                 <p>Description: {{item.description}}</p>
               </div>
             </div>
