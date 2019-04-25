@@ -32,11 +32,11 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="adminListingPage.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Login</div>
+        <div class="sidebar-brand-text mx-3">LiveGator</div>
       </a>
 
       <!-- Divider -->
@@ -47,13 +47,6 @@
         <a class="nav-link" href="/">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Home</span></a>
-      </li>
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="/about">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>About</span></a>
       </li>
 
       <!-- Nav Item - Dashboard -->
@@ -70,19 +63,25 @@
           <span>Signup</span></a>
       </li>
 
+        <!-- Nav Item - Dashboard -->
+      <li class="nav-item">
+        <a class="nav-link" href="/customer_dashboard">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>My Profile</span></a>
+      </li>
+
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="/renter_dashboard">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Renter Dashboard</span></a>
+          <span>My Properties</span></a>
       </li>
 
-
-      <!-- Nav Item - Dashboard -->
+              <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="/customer_dashboard">
+        <a class="nav-link" href="/about">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Customer Dashboard</span></a>
+          <span>About</span></a>
       </li>
 
     </ul>
@@ -117,14 +116,14 @@
             </div>
           </form>
 
-          <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
-            <li class="">
-              <form action="">
-                <button type="button">Logout</button>
-              </form>
-            </li>
-          </ul>
+{#          <!-- Topbar Navbar -->#}
+{#          <ul class="navbar-nav ml-auto">#}
+{#            <li class="">#}
+{#              <form action="">#}
+{#                <button type="button">Logout</button>#}
+{#              </form>#}
+{#            </li>#}
+{#          </ul>#}
 
         </nav>
         <!-- End of Topbar -->
@@ -137,12 +136,12 @@
 					<form method="POST" action="/login">
 						<div class="form-group">
 							<label for="Username" class="control-label">Username</label>
-							<input type="text" class="form-control" id="Username" name="Username" placeholder="Username" maxlength="40" required>
+							<input type="text" class="form-control" id="Username" name="username" placeholder="Username" maxlength="40" required>
 							<div class="invalid-feedback">*Required</div>
 						</div>
 						<div class="form-group">
 							<label for="Password" class="control-label">Password</label>
-							<input type="password" class="form-control" name="Password" placeholder="Password" maxlength="40" required>
+							<input type="password" class="form-control" name="password" placeholder="Password" maxlength="40" required>
 							<div class="invalid-feedback">*Required</div>
 						</div>
 						<a href="/forgot_password">Forgot Password?</a>
