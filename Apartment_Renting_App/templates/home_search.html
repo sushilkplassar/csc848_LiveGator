@@ -34,15 +34,16 @@
 {% endif %}
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-dark">
+    <div class="container-fluid">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/home_search_results"">
+                <a class="nav-link" href="/search_results">
                 <span>Rent</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/renter_add_a_new_listing">
+                <a class="nav-link" href="/renter_dashboard/add_a_new_listing">
                     <span>Post</span></a>
             </li>
             <li class="nav-item">
@@ -70,11 +71,12 @@
                     <span>Sign Up</span> </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Log In">
+                <a class="nav-link" href="/login">
                     <i class="fas fa-sign-in-alt"></i>
                     <span >Login</span> </a>
             </li>
         </ul>
+    </div>
     </div>
 </nav>
 
@@ -122,7 +124,7 @@
                         <button type="submit"class="btn btn-block btn-lg btn-dark">Search</button>
                     </div>
                 </form>
-                <p> ... or Browse</p>
+                <a href="/search_results" class = text-white>..or Browse</a>
             </div>
         </div>
     </div>
@@ -142,7 +144,7 @@
                     <p class="card-text"> $1200 </p>
                     <p class="card-text">2 bed 2 bath 2 parking </p>
                     <p class="card-text"> 861 Sanbarra st Foster City CA 94404</p>
-                    <a href="home_search_single_listing.html" class="btn btn-dark stretched-link">View Property</a>
+                    <a href="/all_listings/1" class="btn btn-dark stretched-link">View Property</a>
                 </div>
             </div>
             <div class="card">
@@ -152,7 +154,7 @@
                     <p class="card-text"> $1200 </p>
                     <p class="card-text">2 bed 2 bath 2 parking </p>
                     <p class="card-text"> 861 Sanbarra st Foster City CA 94404</p>
-                    <a href="home_search_single_listing.html" class="btn btn-dark stretched-link">View Property</a>
+                    <a href="/all_listings/1" class="btn btn-dark stretched-link">View Property</a>
                 </div>
             </div>
             <div class="card">
@@ -162,15 +164,16 @@
                     <p class="card-text"> $1200 </p>
                     <p class="card-text">2 bed 2 bath 2 parking </p>
                     <p class="card-text"> 861 Sanbarra st Foster City CA 94404</p>
-                    <a href="home_search_single_listing.html" class="btn btn-dark stretched-link">View Property</a>
+                    <a href="/all_listings/1" class="btn btn-dark stretched-link">View Property</a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-<h2>This part below is to show search is connected and will be removed after final implementation</h2>
-
-
+{#<h2>This part below is to show search is connected and will be removed after final implementation</h2>#}
+{##}
+{##}
     {#          <!-- Topbar Navbar -->#}
     {#          <ul class="navbar-nav ml-auto">#}
     {#            <li class="">#}
@@ -179,34 +182,42 @@
     {#              </form>#}
     {#            </li>#}
     {#          </ul>#}
-
-
-    {% for item in data %}
-        <li>
-            <div>
-                <div >
-                    <a href='/all_listings/{{ item.house_id}}'>
-                        <img class="img-responsive" src="{{ url_for('static', filename=item.image_url) }}" height="10%"  ></img>
-                        <h4> {{item.house_name}}</h4>
-                    </a>
-                </div>
-                <div >
-                    <p>Price: {{item.price}}</p>
-                    <p>Type: {{item.type}}</p>
-                    <p>Size: {{item.size}}</p>
-                    <p>Distance: {{item.distance}}</p>
-                    <p>Features: {{item.bedroom_count}} bedroom(s), {{item.bathroom_count}} bathroom(s), {{item.parking_count}} parking spot(s)</p>
-                    <p>Address: {{item.number}}  {{item.street}}  {{item.city}} {{item.state}} {{item.zipcode}}</p>
-                    <p>Description: {{item.description}}</p>
-                </div>
-            </div>
-        </li>
-    {% endfor %}
-    </center>
+{##}
+{##}
+{#    {% for item in data %}#}
+{#        <li>#}
+{#            <div>#}
+{#                <div >#}
+{#                    <a href='/all_listings/{{ item.house_id}}'>#}
+{#                        <img class="img-responsive" src="{{ url_for('static', filename=item.image_url) }}" height="10%"  ></img>#}
+{#                        <h4> {{item.house_name}}</h4>#}
+{#                    </a>#}
+{#                </div>#}
+{#                <div >#}
+{#                    <p>Price: {{item.price}}</p>#}
+{#                    <p>Type: {{item.type}}</p>#}
+{#                    <p>Size: {{item.size}}</p>#}
+{#                    <p>Distance: {{item.distance}}</p>#}
+{#                    <p>Features: {{item.bedroom_count}} bedroom(s), {{item.bathroom_count}} bathroom(s), {{item.parking_count}} parking spot(s)</p>#}
+{#                    <p>Address: {{item.number}}  {{item.street}}  {{item.city}} {{item.state}} {{item.zipcode}}</p>#}
+{#                    <p>Description: {{item.description}}</p>#}
+{#                </div>#}
+{#            </div>#}
+{#        </li>#}
+{#    {% endfor %}#}
     <!-- js stuff -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; LiveGator 2019</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
 </body>
 </html>

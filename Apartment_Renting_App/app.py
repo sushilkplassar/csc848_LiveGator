@@ -64,10 +64,16 @@ def home():
         role = -1
     return render_template('home_search.html', data = data, current_user = current_user, username = username, role = role)
 
+@app.route("/search_results", methods=['GET', 'POST'])
+def search_results():
+    data = listings.display_all_listings()
+    return render_template('home_search_results.html', data = data, current_user = current_user, username = User.get_username(current_user))
+
 @app.route("/search", methods=['GET', 'POST'])
 def search():
     data = listings.display_all_listings()
-    return render_template('home_search.html', data = data, current_user = current_user, username = User.get_username(current_user))
+    return render_template('home_search_results.html', data = data, current_user = current_user, username = User.get_username(current_user))
+
 
     # when hosting on AWS server
     # Comment the app.run() and
