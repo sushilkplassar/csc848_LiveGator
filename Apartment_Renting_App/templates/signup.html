@@ -11,6 +11,7 @@
   <title>Signup</title>
 
   <!-- Custom fonts for this template-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -26,130 +27,74 @@
   <disclaimer style="text-align:center" >SFSU Software Engineering Project CSC 648-848, Spring 2019. For Demonstration Only</disclaimer>
 
 
-  <!-- Page Wrapper -->
-  <div id="wrapper">
-
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="adminListingPage.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/search_results">
+                        <span>Rent</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/renter_dashboard/add_a_new_listing">
+                        <span>Post</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/customer_dashboard">
+                        <span>My Profile</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">
+                        <span>About Us</span></a>
+                </li>
+            </ul>
         </div>
-        <div class="sidebar-brand-text mx-3">Signup</div>
-      </a>
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="/">LiveGator</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup">
+                        <i class="far fa-user"></i>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="/">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Home</span></a>
-      </li>
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="/about">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>About</span></a>
-      </li>
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="/login">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Login</span></a>
-      </li>
-
-	  <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="/signup">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Signup</span></a>
-      </li>
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="/renter_dashboard">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Renter Dashboard</span></a>
-      </li>
-
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="/customer_dashboard">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Customer Dashboard</span></a>
-      </li>
-
-    </ul>
-    <!-- End of Sidebar -->
-
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
-
-      <!-- Main Content -->
-      <div id="content">
-
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-          <!--&lt;!&ndash; Sidebar Toggle (Topbar) &ndash;&gt;-->
-          <!--<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">-->
-            <!--<i class="fa fa-bars"></i>-->
-          <!--</button>-->
-
-          <!-- Topbar Title -->
-          <h2>LiveGator</h2>
-
-          <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-
-          <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
-            <li class="">
-              <form action="">
-                <button type="button">Logout</button>
-              </form>
-            </li>
-          </ul>
-
-        </nav>
-        <!-- End of Topbar -->
+                        <span>Sign Up</span> </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span >Login</span> </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
         <!-- Begin Page Content -->
         <div class="container-fluid" style="height: 100%; width: 100%">
 			<div class="row">
 				<div class="col-sm-4"></div>
 				<div class="col-sm-3" style="padding-left: 20px">
-                    <h3>Account Info</h3>
+                    <h3>Get started!</h3>
 					<form method="POST" action="/signup">
 						<div class="form-group">
-							<label for="Username" class="control-label">Username</label>
+							<label for="Username" class="control-label">Select a username</label>
 							<input type="text" class="form-control" id="Username" name="Username" placeholder="Username" maxlength="40" required>
 							<div class="invalid-feedback">*Required</div>
 						</div>
 						<div class="form-group">
-							<label for="Password" class="control-label">Password</label>
+							<label for="Password" class="control-label">Create a Password</label>
 							<input type="password" class="form-control" name="Password" placeholder="Password" maxlength="40" required>
 							<div class="invalid-feedback">*Required</div>
 						</div>
-                    <h3>Your Info</h3>
+{#                        add confirm your password#}
+{#                        have a minimum characters for user and pw.#}
                         <div class="form-group">
-                            <label for="Password" class="control-label">Email</label>
+                            <label for="Password" class="control-label">Enter your e-mail address</label>
                             <input type="text" class="form-control" name="email" placeholder="Email" maxlength="40" required>
                             <div class="invalid-feedback">*Required</div>
 						</div>
