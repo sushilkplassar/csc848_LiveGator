@@ -23,7 +23,7 @@ CREATE TABLE  LISTINGS
   price       VARCHAR(100),
   size        VARCHAR(100),
   distance    VARCHAR(100),
-  number      INT,
+  number      VARCHAR(100),
   street      VARCHAR(100),
   city        VARCHAR(30),
   state       CHAR(20),
@@ -83,8 +83,8 @@ INSERT INTO LISTINGS (landlord_id, house_name, type, description, price, size, d
 
 
 INSERT INTO MESSAGE (landlord_id, customer_id, house_id, sender, message, date) VALUES
-(2, 4, 4, 2, 'Hi Alex, my name is Daniel. Im interested in renting your apartment in South SF', NOW()),
-(1, 2, 2, 1, 'Hi Kim, my name is Alex. Im interested in renting your house in Foster City, and I would like to schedule a tour', NOW());
+(2, 4, 2, 2, 'Hi Alex, my name is Daniel. Im interested in renting your apartment in South SF', NOW()),
+(3, 2, 1, 1, 'Hi Kim, my name is Alex. Im interested in renting your house in Foster City, and I would like to schedule a tour', NOW());
 
 
 INSERT INTO ORDERS (house_id, landlord_id, customer_id, create_date) VALUES
