@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Single listing</title>
+</head>
+<body>
+    <li><a href="/">Home</a></li>
+    <div >
+        <a href='/all_listings/{{ data.house_id}}'>
+          {% for image in data.image_url %}
+            <img src="{{ url_for('static', filename=image) }}">
+          {% endfor %}
+          <h4> {{data.house_name}}</h4>
+        </a>
+        {% if data.is_available == 1 and data.deleted == 0 and data.approved == 1 %}
+            {% if not current_user.user_id or current_user.user_id != data.landlord_id%}
+                <form method="POST" action="/send_renting_request">
+                    <button name="house_id" value={{data.house_id}}>Send renting request</button>
+                </form>
+            {% endif %}
+        {% endif %}
+    </div>
+    <div >
+        <p>Price: {{data.price}}</p>
+        <p>Type: {{data.type}}</p>
+        <p>Size: {{data.size}}</p>
+        <p>Distance: {{data.distance}}</p>
+        <p>Features: {{data.bedroom_count}} bedroom(s), {{data.bathroom_count}} bathroom(s), {{data.parking_count}} parking spot(s)</p>
+        <p>Address: {{data.number}}  {{data.street}}  {{data.city}}, {{data.state}}, {{data.zipcode}}</p>
+        <p>Description: {{data.description}}</p>
+        <p>Availability: {{data.is_available}}</p>
+    </div>
+
+
+    {% if data.is_available == 1 and data.deleted == 0 and data.approved == 1 %}
+        {% if not current_user.user_id or current_user.user_id != data.landlord_id%}
+            <form method="POST" action="/send_direct_msg">
+                <input type="text" placeholder="Message landlord" name="message">
+                <button name="house_id" value={{data.house_id}}>Message landlord</button>
+            </form>
+        {% endif %}
+    {% endif %}
+
+    <form>
+    </form>
+</body>
+</html>
