@@ -75,7 +75,7 @@
             <div>
               <div >
                 <a href='/all_listings/{{ item.house_id}}'>
-                  <img class="img-responsive" src="{{ url_for('static', filename=item.image_url) }}" height="10%"  ></img>
+                  <img class="img-responsive" src="{{ url_for('static', filename=item.image_url) }}" style="width:360px;height:360px;" ></img>
                   <h4> {{item.house_name}}</h4>
                 </a>
               </div>
