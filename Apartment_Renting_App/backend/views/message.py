@@ -15,9 +15,14 @@ message_endpoints = Blueprint('message_endpoints', __name__)
 def customer_view_msg():
     customer_id = current_user.user_id
     data = message.get_msg_by_customerid(customer_id)
+    if len(data) == 0:
+        return render_template("customer_messages.html", data=data)
     result = []
     for d in data:
-        js = {"renter_username": d}
+        landlord_username = user.get_username_by_id(d[0])
+        listing_id = d[2]
+        listing_name = listings.get_listing_by_houseid(listing_id)[0][2]
+        js = {"landlord_username": landlord_username, "house_id" : listing_id, "listing_name" : listing_name, "message" : d[4], "date" : d[5]}
         result.append(js)
     return render_template("customer_messages.html", data = result)
 
@@ -27,12 +32,42 @@ def customer_view_msg():
 def renter_view_msg():
     renter_id = current_user.user_id
     data = message.get_msg_by_renterid(renter_id)
+    if len(data) == 0:
+        return render_template("renter_messages.html", data=data)
     result = []
     for d in data:
-        js = {"customer_username": d}
+        customer_username = user.get_username_by_id(d[1])
+        listing_id = d[2]
+        listing_name = listings.get_listing_by_houseid(listing_id)[0][2]
+        js = {"customer_username": customer_username, "house_id": listing_id, "listing_name": listing_name, "message": d[4], "date": d[5]}
         result.append(js)
     return render_template("renter_messages.html", data = result)
 
+
+''' Below are the old messaging system. Discarded on April 30 by Kim
+# @message_endpoints.route('/customer_dashboard/view_msg', methods=['GET']) #return list of renter usernmae
+# @login_required
+# def customer_view_msg():
+#     customer_id = current_user.user_id
+#     data = message.get_msg_by_customerid(customer_id)
+#     result = []
+#     for d in data:
+#         js = {"renter_username": d}
+#         result.append(js)
+#     return render_template("customer_messages.html", data = result)
+# 
+# 
+# @message_endpoints.route('/renter_dashboard/view_msg', methods=['GET'])#return list of customer usernmae
+# @login_required
+# def renter_view_msg():
+#     renter_id = current_user.user_id
+#     data = message.get_msg_by_renterid(renter_id)
+#     result = []
+#     for d in data:
+#         js = {"customer_username": d}
+#         result.append(js)
+#     return render_template("renter_messages.html", data = result)
+'''
 
 @message_endpoints.route('/customer_dashboard/view_msg/<username>', methods=['GET'])
 @login_required
@@ -74,7 +109,7 @@ def send_direct_msg():
     contact_house = listings.get_listing_by_houseid(house_id)[0]
     renter_id = contact_house[1]
     msg_to_send = request.form["message"]
-    send_msg(renter_id, customer_id, customer_id, msg_to_send)
+    send_msg(renter_id, customer_id, house_id, customer_id, msg_to_send)
     url = '/all_listings/' + house_id
     return redirect(url)
 
@@ -104,14 +139,14 @@ def renter_send_msg(username):
     return redirect(redirect_url)
 
 
-def send_msg(renter_id, customer_id, sender, msg_to_send):
+def send_msg(renter_id, customer_id, house_id, sender, msg_to_send):
     # print(type(renter_id))
     if customer_id is renter_id:
         return make_response(jsonify({'code': '400',
                                       'msg': 'You cannot send message to yourself'}), 400)
     try:
         # print("renter:", renter_id, "customer:", customer_id)
-        message.send_msg(renter_id, customer_id, sender, msg_to_send)
+        message.send_msg(renter_id, customer_id, house_id, sender, msg_to_send)
     except:
         return make_response(jsonify({'code': '400',
                                       'msg': 'Msg failed, please try again'}), 400)
