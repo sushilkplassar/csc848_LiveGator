@@ -128,36 +128,15 @@ footer.footer {
   padding-bottom: 4rem;
 }
 
-.pending {
-  display: inline-block;
-  height: 265px;
-  width: 265px;
-  background: transparent url("icons/pending.svg") no-repeat 0 0;
+.icon {
+  display: block;
+  height: 225px;
+  width: 225px;
+  text-align: center;
+  margin: auto;
 }
 
-.pending:hover {
-  background-position: 0 -265px;
-}
-
-.viewall {
-  display: inline-block;
-  height: 265px;
-  width: 265px;
-  background: transparent url("icons/viewall.svg") no-repeat 0 0;
-}
-
-.viewall:hover {
-  background-position: 0 -265px;
-}
-
-.message {
-  display: inline-block;
-  height: 265px;
-  width: 265px;
-  background: transparent url("icons/message.svg") no-repeat 0 0;
-}
-
-.message:hover {
-  background-position: 0 -265px;
+.icon:hover {
+  background-color: dodgerblue;
 }
 

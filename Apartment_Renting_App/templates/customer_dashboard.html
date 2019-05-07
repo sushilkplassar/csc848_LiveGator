@@ -82,25 +82,28 @@
     </div>
 </nav>
 
+<!-- Body -->
 <div class="container-fluid">
-    <div class="card text-center">
-        <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Your Requests</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">View All</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Messages</a>
-                </li>
-            </ul>
+    <div class="row">
+        <div class="col-sm">
+            <a class="icon" href="/customer_dashboard/view_orders">
+                <img src="../static/icons/view_all.svg" alt="View All Orders">
+                View Order
+            </a>
+            <br>
         </div>
-        <div class="card-body">
-            <div class="embed-responsive embed-responsive-4by3">
-              <iframe class="embed-responsive-item" src="/customer_dashboard/view_pending_request"></iframe>
-            </div>
+        <div class="col-sm">
+            <a class="icon" href="/customer_dashboard/view_pending_request">
+                <img src="../static/icons/view_pending.svg" alt="View Pending">
+                View Pending
+            </a>
+            <br>
+        </div>        <div class="col-sm">
+            <a class="icon" href="/customer_dashboard/view_msg">
+                <img src="../static/icons/view_messages.svg" alt="View Messages">
+                View Messages
+            </a>
+            <br>
         </div>
     </div>
 </div>
