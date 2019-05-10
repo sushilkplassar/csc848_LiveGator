@@ -1,48 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Single listing</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Listing Page</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="../static/css.css" rel="stylesheet">
+
+  <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+          height: 80%;
+          height:360px;
+          width:540px;
+      }
+    </style>
+
 </head>
-<body>
-    <li><a href="/">Home</a></li>
-    <div >
-        <a href='/all_listings/{{ data.house_id}}'>
-          {% for image in data.image_url %}
-            <img src="{{ url_for('static', filename=image) }}">
-          {% endfor %}
-          <h4> {{data.house_name}}</h4>
-        </a>
-        {% if data.is_available == 1 and data.deleted == 0 and data.approved == 1 %}
-            {% if not current_user.user_id or current_user.user_id != data.landlord_id%}
-                <form method="POST" action="/send_renting_request">
-                    <button name="house_id" value={{data.house_id}}>Send renting request</button>
-                </form>
-            {% endif %}
-        {% endif %}
-    </div>
-    <div >
-        <p>Price: {{data.price}}</p>
-        <p>Type: {{data.type}}</p>
-        <p>Size: {{data.size}}</p>
-        <p>Distance: {{data.distance}}</p>
-        <p>Features: {{data.bedroom_count}} bedroom(s), {{data.bathroom_count}} bathroom(s), {{data.parking_count}} parking spot(s)</p>
-        <p>Address: {{data.number}}  {{data.street}}  {{data.city}}, {{data.state}}, {{data.zipcode}}</p>
-        <p>Description: {{data.description}}</p>
-        <p>Availability: {{data.is_available}}</p>
-    </div>
 
+<body id="page-top">
 
-    {% if data.is_available == 1 and data.deleted == 0 and data.approved == 1 %}
-        {% if not current_user.user_id or current_user.user_id != data.landlord_id%}
-            <form method="POST" action="/send_direct_msg">
-                <input type="text" placeholder="Message landlord" name="message">
-                <button name="house_id" value={{data.house_id}}>Message landlord</button>
-            </form>
-        {% endif %}
+    {% if current_user.user_id %}
+        Hi {{ username }}!
+        <form method="POST" action="/logout">
+            <button>logout</button>
+        </form>
     {% endif %}
 
-    <form>
-    </form>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/search_results"">
+                    <span>Rent</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/renter_dashboard/add_a_new_listing">
+                        <span>Post</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/customer_dashboard">
+                        <span>My Profile</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">
+                        <span>About Us</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="/">LiveGator</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup">
+                        <i class="far fa-user"></i>
+
+                        <span>Sign Up</span> </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Log In">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span >Login</span> </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">{{data.house_name}}</h1>
+          </div>
+          <div class="d-sm-flex align-items-center mb-4">
+            <h1 class="h3 mb-0 text-gray-800">{{data.number}}  {{data.street}}  {{data.city}}, {{data.state}}, {{data.zipcode}}</h1>
+          </div>
+
+          <div class="d-sm-flex align-items-center mb-4">
+            <div class="card" style="width: 30rem;">
+                    <a href='/all_listings/{{ data.house_id}}'>
+                        {% for image in data.image_url %}
+                            <img class="card-img" src="{{ url_for('static', filename=image) }}"></img>
+                        {% endfor %}
+                    </a>
+            </div>
+            <div class="card mx-3">
+                <div id="map"></div>
+            </div>
+          </div>
+
+          <div class="d-sm-flex align-items-center mb-4">
+
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h3 class="m-0 font-weight-bold text-primary">
+                      Type: {{data.type}}, Rooms: {{data.bedroom_count}}, Baths: {{data.bathroom_count}}, Parking: {{data.parking_count}}, Distance: {{ data.distance }}
+                  </h3>
+                </div>
+                <div class="card-body">
+                    <h1 class="h3 mb-0 text-gray-800">Description: </h1>
+                     <h5 class="mx-3 text-gray-800">
+                         {{data.description}}
+                    </h5>
+                </div>
+              </div>
+
+              <div class="card shadow mb-4 mx-3">
+                <div class="card-header py-3">
+                  <h3 class="m-0 font-weight-bold text-primary">Price: ${{data.price}}</h3>
+                </div>
+                <div class="card-body">
+                     <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <h4 class="my-1 mb-1">Contact Seller: </h4>
+                        </li>
+                        <li class="list-group-item">
+                         {% if data.is_available == 1 and data.deleted == 0 and data.approved == 1 %}
+                            {% if not current_user.user_id or current_user.user_id != data.landlord_id%}
+                                <form method="POST" action="/send_renting_request">
+                                    <button name="house_id" value={{data.house_id}}>Send renting request</button>
+                                </form>
+                            {% endif %}
+                         {% endif %}
+                        </li>
+                    </ul>
+                </div>
+              </div>
+
+          </div>
+
+{#          <!-- Divider -->#}
+{#          <hr class="sidebar-divider my-0">#}
+{##}
+{#            <div class="d-sm-flex">#}
+{#                <div class="align-items-center justify-content-between mb-4">#}
+{#                <h1 class="h3 mb-0 text-gray-800">Description: </h1>#}
+{#              </div>#}
+{#                <div class="align-self-start">#}
+{#                    <h5 class="mx-3 text-gray-800">#}
+{#                        {{data.description}}#}
+{#                    </h5>#}
+{#                </div>#}
+{#            </div>#}
+        </div>
+        <!-- /.container-fluid -->
+
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; LiveGator 2019</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <script>
+
+     function initMap() {
+
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+        center: {lat: 37.7219, lng: -122.4782}  // SF.
+      });
+
+
+      var directionsService = new google.maps.DirectionsService;
+      var directionsDisplay = new google.maps.DirectionsRenderer({
+        draggable: true,
+        map: map,
+        panel: document.getElementById('right-panel')
+      });
+
+      directionsDisplay.addListener('directions_changed', function() {
+        computeTotalDistance(directionsDisplay.getDirections());
+      });
+
+      displayRoute('1600 Holloway Dr. San Francisco, CA', '{{data.number}}  {{data.street}}  {{data.city}}, {{data.state}}, {{data.zipcode}}', directionsService,
+          directionsDisplay);
+    }
+
+    function displayRoute(origin, destination, service, display) {
+      service.route({
+        origin: origin,
+        destination: destination,
+        travelMode: 'DRIVING',
+        avoidTolls: true
+      }, function(response, status) {
+        if (status === 'OK') {
+          display.setDirections(response);
+        } else {
+          alert('Could not display directions due to: ' + status);
+        }
+      });
+    }
+
+    function computeTotalDistance(result) {
+      var total = 0;
+      var myroute = result.routes[0];
+      for (var i = 0; i < myroute.legs.length; i++) {
+        total += myroute.legs[i].distance.value;
+      }
+      total = total / 1000;
+      document.getElementById('total').innerHTML = total + ' km';
+    }
+
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAj2puVPdBo9PeJ0_XP_m5JCSMuc2XGVOk&callback=initMap&libraries=geometry">
+    </script>
+
 </body>
+
 </html>
