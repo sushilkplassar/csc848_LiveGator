@@ -67,23 +67,19 @@ def home():
         role = -1
     return render_template('home_search.html', data = data, current_user = current_user, username = username, role = role, key = search_key, sort = sort, type = type)
 
+@app.route("/search_results", methods=['GET', 'POST'])
+def search_results():
+    data = listings.display_all_listings()
+    return render_template('home_search_results.html', data = data, current_user = current_user, username = User.get_username(current_user))
+
 @app.route("/search", methods=['GET', 'POST'])
 def search():
     search_key = request.args.get("search_key", "")
     sort = request.args.get("sort", -1)
     type = request.args.get("type", "")
     data = listings.display_all_listings()
-    # user = current_user
-    username = "visitor"
-    role = -1
-    try:
-        loggedin_user = user.get_user_by_id(current_user.user_id)
-        username = loggedin_user[1]
-        role = loggedin_user[4]
-    except:
-        username = "visitor"
-        role = -1
-    return render_template('home_search.html', data=data, current_user=current_user, username=username, role=role, key=search_key, sort = sort, type = type)
+    return render_template('home_search_results.html', data = data, current_user = current_user, username = User.get_username(current_user))
+
 
     # when hosting on AWS server
     # Comment the app.run() and
