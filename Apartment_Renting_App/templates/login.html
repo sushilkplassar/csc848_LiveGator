@@ -78,7 +78,7 @@
 
     <div class="row">
         <div class="col-sm-4"></div>
-        <div class="col-sm-3" style="padding-left: 20px">
+        <div class="col-sm-4" style="padding-left: 20px">
                 <h3 >Log in</h3>
             <form method="POST" action="/login">
                 <div class="form-group">
@@ -91,13 +91,17 @@
                     <input type="password" class="form-control" name="password" placeholder="Password" maxlength="40" required>
                     <div class="invalid-feedback">*Required</div>
                 </div>
-                <a href="/forgot_password">Forgot Password?</a>
-                <a href="/signup">Not a user?</a>
-                <br>
-                <button type="submit">Login</button>
+                <div class="checkbox">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a href="/forgot_password"><span class="forgot_password">Forgot Password?</span></a>
+                </div>
+                <button type="submit" class="block">Login</button>
+                <hr>
+                <a class="block" href="/signup" formnovalidate>Sign Up</a>
+
             </form>
         </div>
-        <div class="col-sm-5"></div>
+        <div class="col-sm-4"></div>
     </div>
 </div>
 <!--end of contatiner>
