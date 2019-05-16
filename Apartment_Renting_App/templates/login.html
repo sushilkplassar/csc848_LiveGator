@@ -80,7 +80,7 @@
         <div class="col-sm-4"></div>
         <div class="col-sm-4" style="padding-left: 20px">
                 <h3 >Log in</h3>
-            <form method="POST" action="/login">
+            <form method="POST" action="/login" class="needs-validation" novalidate>
                 <div class="form-group">
                     <label for="Username" class="control-label">Username</label>
                     <input type="text" class="form-control" id="Username" name="username" placeholder="Username" maxlength="40" required>
@@ -125,6 +125,19 @@
 </div>
 <!-- End of Page Wrapper -->
 
+
+<script type="text/javascript">
+    var form = document.querySelector('.needs-validation');
+
+    form.addEventListener('submit', function(event){
+        if(form.checkValidity() == false){
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+    })
+
+</script>
 
 </body>
 
