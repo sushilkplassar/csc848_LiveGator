@@ -24,7 +24,7 @@
       #map {
           height: 80%;
           height:360px;
-          width:540px;
+          width:680px;
       }
     </style>
 
@@ -91,11 +91,11 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">{{data.house_name}}</h1>
+          <div class="mb-4 my-lg-3">
+            <h1 class="h3 mb-0 text-gray-800 text-center">{{data.house_name}}</h1>
           </div>
-          <div class="d-sm-flex align-items-center mb-4">
-            <h1 class="h3 mb-0 text-gray-800">{{data.number}}  {{data.street}}  {{data.city}}, {{data.state}}, {{data.zipcode}}</h1>
+          <div class="mb-4">
+            <h1 class="h3 mb-0 text-gray-800 text-center">{{data.number}}  {{data.street}}  {{data.city}}, {{data.state}}, {{data.zipcode}}</h1>
           </div>
 
           <div class="d-sm-flex align-items-center mb-4">
@@ -113,7 +113,7 @@
 
           <div class="d-sm-flex align-items-center mb-4">
 
-              <div class="card shadow mb-4">
+              <div class="card shadow mb-4" style="min-height: 220px;">
                 <div class="card-header py-3">
                   <h3 class="m-0 font-weight-bold text-primary">
                       Type: {{data.type}}, Rooms: {{data.bedroom_count}}, Baths: {{data.bathroom_count}}, Parking: {{data.parking_count}}, Distance: {{ data.distance }}
@@ -127,7 +127,7 @@
                 </div>
               </div>
 
-              <div class="card shadow mb-4 mx-3">
+              <div class="card shadow mb-4 mx-3" style="min-height: 220px;">
                 <div class="card-header py-3">
                   <h3 class="m-0 font-weight-bold text-primary">Price: ${{data.price}}</h3>
                 </div>
@@ -151,19 +151,6 @@
 
           </div>
 
-{#          <!-- Divider -->#}
-{#          <hr class="sidebar-divider my-0">#}
-{##}
-{#            <div class="d-sm-flex">#}
-{#                <div class="align-items-center justify-content-between mb-4">#}
-{#                <h1 class="h3 mb-0 text-gray-800">Description: </h1>#}
-{#              </div>#}
-{#                <div class="align-self-start">#}
-{#                    <h5 class="mx-3 text-gray-800">#}
-{#                        {{data.description}}#}
-{#                    </h5>#}
-{#                </div>#}
-{#            </div>#}
         </div>
         <!-- /.container-fluid -->
 

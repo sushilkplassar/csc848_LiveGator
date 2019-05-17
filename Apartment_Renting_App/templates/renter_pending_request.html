@@ -1,35 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <title>Renter pending requests</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../static/css.css" rel="stylesheet">
 </head>
 <body>
-<a href="/">Home</a>
-    <b><h3><u>All renting requests</u></h3></b>
-    {% for item in data %}
-        <li>
-        <div>
-          <div >
-            Requested listing: <a href='/all_listings/{{ item.house_id}}'> {{item.house_name}} </a>
-            <p>Request customer: {{item.customer_username}}</p>
-            <p>Request date: {{item.create_date}}</p>
-            <p>Request status: {{item.status}}</p>
-          </div>
+{% if current_user.user_id %}
+        Hi {{ username }}!
+        <form method="POST" action="/logout">
+            <button>logout</button>
+        </form>
+    {% endif %}
 
-          {% if item.status == 0%}
-              <div>
-                  <form method="POST" action="/place_order">
-                    <button name="house_id" value={{item.house_id}}>Approve this request</button>
-                  </form>
-
-                  <form method="POST" action="/delete_request">
-                    <button name="house_id" value={{item.house_id}}>Decline this request</button>
-                  </form>
-              </div>
-          {% endif %}
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/search_results"">
+                    <span>Rent</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/renter_dashboard/add_a_new_listing">
+                        <span>Post</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/customer_dashboard">
+                        <span>My Profile</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">
+                        <span>About Us</span></a>
+                </li>
+            </ul>
         </div>
-      </li>
-    {% endfor %}
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="/">LiveGator</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup">
+                        <i class="far fa-user"></i>
+
+                        <span>Sign Up</span> </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span >Login</span> </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Renting Table -->
+      <div class="card shadow mb-4 align-items-center">
+        <div class="py-3">
+          <h6 class="font-weight-bold text-primary text-center">Renting Requests</h6>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered fixed_header" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Requested Listing</th>
+                  <th>Landlord</th>
+                  <th>Request Date</th>
+                  <th>Request Status</th>
+                  <th>Approve</th>
+                  <th>Decline</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in data %}
+                <tr>
+                  <td><a href='/all_listings/{{ item.house_id}}'> {{item.house_name}} </a></td>
+                  <td>{{item.customer_username}}</td>
+                  <td>{{item.create_date}}</td>
+                  <td>{{item.status}}</td>
+                  <td>
+                      <form method="POST" action="/place_order">
+                        <button name="house_id" value={{item.house_id}}>Approve this request</button>
+                      </form>
+                  </td>
+                  <td>
+                      <form method="POST" action="/delete_request">
+                        <button name="house_id" value={{item.house_id}}>Decline this request</button>
+                      </form>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; LiveGator 2019</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
 </body>
 </html>
