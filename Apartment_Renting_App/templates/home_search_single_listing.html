@@ -98,51 +98,66 @@
             <h1 class="h3 mb-0 text-gray-800 text-center">{{data.number}}  {{data.street}}  {{data.city}}, {{data.state}}, {{data.zipcode}}</h1>
           </div>
 
-          <div class="d-sm-flex align-items-center mb-4">
+          <div class="d-sm-flex align-items-center justify-content-center mb-4">
             <div class="card" style="width: 30rem;">
                     <a href='/all_listings/{{ data.house_id}}'>
                         {% for image in data.image_url %}
-                            <img class="card-img" src="{{ url_for('static', filename=image) }}"></img>
+                            <img class="card-img img-responsive" src="{{ url_for('static', filename=image) }}"></img>
                         {% endfor %}
                     </a>
             </div>
             <div class="card mx-3">
-                <div id="map"></div>
+                <div class="card-img" id="map"></div>
             </div>
           </div>
 
-          <div class="d-sm-flex align-items-center mb-4">
+          <div class="d-sm-flex align-items-center justify-content-center mb-4">
 
-              <div class="card shadow mb-4" style="min-height: 220px;">
+              <div class="card shadow mb-4" style="min-height: 276px; min-width: 400px;">
                 <div class="card-header py-3">
-                  <h3 class="m-0 font-weight-bold text-primary">
-                      Type: {{data.type}}, Rooms: {{data.bedroom_count}}, Baths: {{data.bathroom_count}}, Parking: {{data.parking_count}}, Distance: {{ data.distance }}
-                  </h3>
+                    <h3 class="m-0 font-weight-bold text-primary">Description</h3>
                 </div>
                 <div class="card-body">
-                    <h1 class="h3 mb-0 text-gray-800">Description: </h1>
                      <h5 class="mx-3 text-gray-800">
                          {{data.description}}
                     </h5>
                 </div>
               </div>
 
-              <div class="card shadow mb-4 mx-3" style="min-height: 220px;">
+              <div class="card shadow mb-4 mx-3" style="max-height: 276px; min-height: 276px; min-width:275px;">
+                <div class="card-header py-3">
+                  <h3 class="m-0 font-weight-bold text-primary">Details</h3>
+                </div>
+                <div class="card-body">
+                    <ul style="list-style-type: none;">
+                        <li><h5>Type: {{ data.type }}</h5></li>
+                        <li><h5>Rooms: {{ data.bedroom_count }}</h5></li>
+                        <li><h5>Baths: {{ data.bathroom_count }}</h5></li>
+                        <li><h5>Parking: {{ data.parking_count }}</h5></li>
+                        <li><h5>Distance: {{ data.distance }}</h5></li>
+                    </ul>
+                </div>
+              </div>
+
+              <div class="card shadow mb-4 mx-3" style="min-height: 276px; min-width: 275px;">
                 <div class="card-header py-3">
                   <h3 class="m-0 font-weight-bold text-primary">Price: ${{data.price}}</h3>
                 </div>
                 <div class="card-body">
                      <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <h4 class="my-1 mb-1">Contact Seller: </h4>
+                            <h4 class="my-1 mb-1">Contact Seller: {{ data.landlord_id.username}}</h4>
                         </li>
                         <li class="list-group-item">
+                         <br>
                          {% if data.is_available == 1 and data.deleted == 0 and data.approved == 1 %}
                             {% if not current_user.user_id or current_user.user_id != data.landlord_id%}
                                 <form method="POST" action="/send_renting_request">
                                     <button name="house_id" value={{data.house_id}}>Send renting request</button>
                                 </form>
                             {% endif %}
+                         {% else %}
+                            <h4>Already Sent Request</h4>
                          {% endif %}
                         </li>
                     </ul>
