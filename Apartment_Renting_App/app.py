@@ -51,6 +51,9 @@ configure_uploads(app, uploaded_photos)
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
+    search_key = request.args.get("search_key", "")
+    sort = request.args.get("sort", -1)
+    type = request.args.get("type", "")
     data = listings.display_all_listings()
     # user = current_user
     username = "visitor"
@@ -62,12 +65,21 @@ def home():
     except:
         username = "visitor"
         role = -1
-    return render_template('home_search.html', data = data, current_user = current_user, username = username, role = role)
+    return render_template('home_search.html', data = data, current_user = current_user, username = username, role = role, key = search_key, sort = sort, type = type)
+
+@app.route("/search_results", methods=['GET', 'POST'])
+def search_results():
+    data = listings.display_all_listings()
+    return render_template('home_search_results.html', data = data, current_user = current_user, username = User.get_username(current_user))
 
 @app.route("/search", methods=['GET', 'POST'])
 def search():
+    search_key = request.args.get("search_key", "")
+    sort = request.args.get("sort", -1)
+    type = request.args.get("type", "")
     data = listings.display_all_listings()
-    return render_template('home_search.html', data = data, current_user = current_user, username = User.get_username(current_user))
+    return render_template('home_search_results.html', data = data, current_user = current_user, username = User.get_username(current_user))
+
 
     # when hosting on AWS server
     # Comment the app.run() and
@@ -75,8 +87,5 @@ def search():
 
 if __name__ == "__main__":
     app.run()
-    #Below used for opening ports, and allowing connections to website
-    #Toggle app.run() and below app.run(host... when adding to online server.
-
     #app.run(host='0.0.0.0', port=80, debug=True)
 

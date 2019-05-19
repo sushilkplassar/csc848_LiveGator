@@ -56,6 +56,8 @@ def display_all_listings():
     #3: size low to high    4: size high to low
     #5: distance low to high    6: distance high to low
     search_key = request.args.get("search_key", "")
+    if len(search_key) > 40:
+        search_key = ""
     data = listings.get_all_listings(price_low, price_high, size_low, size_high, distance_low, distance_high, listing_type, sort, search_key)
     # print(data)
     result = []

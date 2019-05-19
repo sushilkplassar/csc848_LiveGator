@@ -8,15 +8,13 @@
 <a href="/">Home</a>
     <b><h3><u>All messages</u></h3></b>
     {% for item in data %}
-        <li>
         <div>
-          <div >
-            <a href='/renter_dashboard/view_msg/{{item.customer_username}}'>
-              <h2> {{item.customer_username}}</h2>
-            </a>
-          </div>
+            <p>Customer: {{ item.customer_username }}</p>
+            <p>Date: {{ item.date }}</p>
+            Listing: <a href='/all_listings/{{ item.house_id}}}'> {{item.listing_name}}</a>
+            <p>Message: {{ item.message }}</p>
+            <p>=============================================================================</p>
         </div>
-      </li>
     {% endfor %}
 </body>
 </html>
