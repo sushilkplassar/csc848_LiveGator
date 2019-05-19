@@ -9,7 +9,7 @@
   <meta name="author" content="">
 
   <title>Signup</title>
-
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <!-- Custom fonts for this template-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
@@ -104,7 +104,21 @@
                     <input type="password" class="form-control" id="confirm_password"  placeholder="Confirm Password" required>
 			        <div class="invalid-feedback">*Password Does Not Match</div>
 			    	<div class="help-block with-errors"></div>
-                 </div>
+                </div>
+                <br>
+
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                      <label class="form-check-label" for="invalidCheck">
+                        Agree to <a href="#">terms and conditions</a>
+                      </label>
+                      <div class="invalid-feedback">
+                        You must agree before submitting.
+                      </div>
+                    </div>
+                  </div>
+                <div class="g-recaptcha" data-sitekey="6Le6RqQUAAAAAMuX5B5bb3a8x4yBlXJEHVVQFtYS"></div>
                 <br>
                 <button type="submit" class="block">Signup</button>
             </form>
@@ -150,6 +164,7 @@
     password.onchange = validatePassword;
     confirm_password.onkeyup = validatePassword;
 </script>
+
 
 
 </body>
