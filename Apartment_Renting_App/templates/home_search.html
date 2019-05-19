@@ -26,29 +26,32 @@
 <disclaimer style="text-align:center" >SFSU Software Engineering Project CSC 648-848, Spring 2019. For Demonstration Only</disclaimer>
 
 
-{% if current_user.user_id %}
-    Hi {{ username }}!
-    <form method="POST" action="/logout">
-        <button>logout</button>
-    </form>
-{% endif %}
+{#{% if current_user.user_id %}#}
+{#    Hi {{ username }}!#}
+{#    <form method="POST" action="/logout">#}
+{#        <button>logout</button>#}
+{#    </form>#}
+{#{% endif %}#}
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-dark">
-    <div class="container-fluid">
+<nav class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-dark ">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" href="/search_results">
-                <span>Rent</span></a>
+                    <span>Browse</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/renter_dashboard/add_a_new_listing">
+                <a class="nav-link" href="/landlord_dashboard/add_a_new_listing">
                     <span>Post</span></a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/landlord_dashboard">
+                    <span>Landlord dashboard</span></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/customer_dashboard">
-                    <span>My Profile</span></a>
+                    <span>Customer dashboard</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/about">
@@ -64,19 +67,43 @@
     </div>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            {% if current_user.user_id %}
+                <li class="nav-item">
+{#                    <span>Hi {{ username }}!</span>#}
+
+                    <a class="nav-link">
+                    <i class="far fa-user"></i>
+                    <span>Hi {{ username }}!</span> </a>
+
+                </li>
+
+
+
+                <li class="nav-item">
+                    <form method="POST" action="/logout">
+                        <button>logout</button>
+                    </form>
+{#                #}
+{#                <form class="nav-link" method = "POST" href="/logout">#}
+{#                    <i class="far fa-user"></i>#}
+{#                    <span>Logout</span> </form>#}
+
+
+                </li>
+            {% else %}
+                <li class="nav-item">
                 <a class="nav-link" href="/signup">
                     <i class="far fa-user"></i>
 
                     <span>Sign Up</span> </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/login">
-                    <i class="fas fa-sign-in-alt"></i>
-                    <span >Login</span> </a>
-            </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span >Login</span> </a>
+                </li>
+            {% endif %}
         </ul>
-    </div>
     </div>
 </nav>
 

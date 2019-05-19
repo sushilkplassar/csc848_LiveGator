@@ -13,6 +13,7 @@ import uuid
 # from flaskext.couchdb import CouchDBManager, Document, TextField, DateTimeField, ViewField
 from flask_uploads import UploadSet, configure_uploads, IMAGES, UploadNotAllowed
 from ..models import listings
+from backend.models import user
 from ..models.user import User
 
 listing_endpoints = Blueprint('listing_endpoints', __name__)
@@ -84,6 +85,12 @@ def display_all_listings():
 
 @listing_endpoints.route('/all_listings/<house_id>', methods=['GET'])
 def display_a_house(house_id):
+    username = "visitor"
+    try:
+        loggedin_user = user.get_user_by_id(current_user.user_id)
+        username = loggedin_user[1]
+    except:
+        username = "visitor"
     data = listings.get_listing_by_houseid(house_id)
     result = []
 
@@ -106,7 +113,7 @@ def display_a_house(house_id):
             "size": d[6], "distance": d[7], "number": d[8], "street": d[9], "city": d[10], "state": d[11], "zipcode": d[12],
             'image_url': image_array, "bedroom_count": d[14], "bathroom_count": d[15], "parking_count": d[16], "is_available": d[17],
             "create_date": d[18], "approved": d[19], "deleted": d[20]}
-    return render_template("home_search_single_listing.html", data = result)
+    return render_template("home_search_single_listing.html", data = result, username = username)
 
 
 
@@ -141,7 +148,9 @@ def get_listings_by_userid():
 @login_required
 def add_a_new_listing():
     if request.method == 'GET':
-        return render_template("renter_add_a_new_listing.html")
+        loggedin_user = user.get_user_by_id(current_user.user_id)
+        username = loggedin_user[1]
+        return render_template("renter_add_a_new_listing.html", username = username)
     # try:
     user_id = current_user.user_id
     house_name = request.form.get("house_name", "N/A")
