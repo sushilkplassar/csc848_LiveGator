@@ -85,7 +85,7 @@
 
 <nav class="navbar navbar-default">
     <ul class="nav navbar-nav">
- <form class = form-inline method="GET" action="/search" style="margin:auto;max-width:600px">
+{# <form class = form-inline method="GET" action="/search" style="margin:auto;max-width:600px">#}
 {#                <li class="nav-item">#}
 {#                    <select class="form-control search-slt" id="exampleFormControlSelect1">#}
 {#                        <option value=0>Sort by</option>#}
@@ -164,7 +164,7 @@
 {#                <input type="text" placeholder="Min Distance" name="distance_low">#}
 {#                <input type="text" placeholder="Max Distance" name="distance_high">#}
 
-    <input type="text" placeholder="Search by listing name or address" name="search_key" style="width:400px">
+    <input type="text" placeholder="Search by listing name or address" name="search_key" style="width:400px" value = {{ key }} >
     <button type="submit"><i class="fa fa-search"></i></button>
 </form>
 <center>
