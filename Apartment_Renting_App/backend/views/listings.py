@@ -1,3 +1,10 @@
+####################################
+# File name: listings.py           #
+# Description:
+# Author: Team-13                  #
+# Submission: Spring-2019          #
+# Instructor: Dragutin Petkovic    #
+####################################
 import os
 from flask import Flask, Blueprint, abort, request, flash, url_for, redirect, render_template, jsonify, g, current_app
 from flask_login import login_user, logout_user, current_user , login_required, LoginManager

@@ -1,3 +1,11 @@
+-- =============================================
+-- File name: schema.py
+-- Description:
+-- Author: Team-13
+-- Submission: Spring-2019
+-- Instructor: Dragutin Petkovic
+-- =============================================
+
 DROP DATABASE IF EXISTS CSC648;
 CREATE DATABASE CSC648;
 USE CSC648;

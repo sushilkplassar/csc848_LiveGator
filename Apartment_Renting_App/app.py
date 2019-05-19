@@ -1,3 +1,10 @@
+####################################
+# File name: app.py                #
+# Author: Team-13                  #
+# Submission: Spring-2019          #
+# Instructor: Dragutin Petkovic    #
+####################################
+
 import os
 from flask import Flask, session, request, flash, redirect, render_template, url_for
 from flask_login import LoginManager, login_required, current_user

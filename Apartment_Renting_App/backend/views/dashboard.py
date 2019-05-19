@@ -1,3 +1,10 @@
+####################################
+# File name: dashboard.py          #
+# Description:
+# Author: Team-13                  #
+# Submission: Spring-2019          #
+# Instructor: Dragutin Petkovic    #
+####################################
 from flask import Flask, Blueprint, request, flash, url_for, redirect, render_template
 from flask_login import login_user, logout_user, current_user , login_required
 from werkzeug.security import check_password_hash, generate_password_hash
