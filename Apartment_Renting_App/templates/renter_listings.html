@@ -5,7 +5,7 @@
     <title>renter all listings</title>
 </head>
 <body>
-<a href="/">Home</a>
+<a href="/search_results">Home</a>
     <form method="GET" action="/renter_dashboard/view_listings">
         <a>Sort by:</a>
         <select name="sort">
@@ -26,7 +26,7 @@
                 {%  if item.deleted == 0 %}
                   <div >
                     <a href='/all_listings/{{item.house_id}}'>
-                      <img class="img-responsive" src="{{ url_for('static', filename=item.image_url) }}" height="10%"  ></img>
+                      <img class="img-responsive" src="{{ url_for('static', filename=item.image_url) }}" style="width:360px;height:360px;"  ></img>
                       <h4 id='title'> {{item.house_name}}</h4>
                     </a>
                   </div>
@@ -38,8 +38,8 @@
                     <p>Features: {{item.bedroom_count}} bedroom(s), {{item.bathroom_count}} bathroom(s), {{item.parking_count}} parking spot(s)</p>
                     <p>Address: {{item.number}}  {{item.street}}  {{item.city}} {{item.state}} {{item.zipcode}}</p>
                     <p>Description: {{item.description}}</p>
-                    <p>Available? {{item.is_available}}</p>
-                    <p>Approved? {{item.approved}}</p>
+                    <p>Available? {% if  item.is_available == 1%} Yes {% else %} No {% endif %}</p>
+                    <p>Approved? {% if  item.approved == 1%} Yes {% else %} No {% endif %}</p>
                     <p>Created on: {{item.create_date}}</p>
                   </div>
                   <form method="POST" action="/renter_dashboard/delete">
