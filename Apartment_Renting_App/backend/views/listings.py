@@ -110,7 +110,7 @@ def display_a_house(house_id):
 
 
 
-@listing_endpoints.route('/renter_dashboard/view_listings', methods=['GET'])
+@listing_endpoints.route('/landlord_dashboard/view_listings', methods=['GET'])
 @login_required
 def get_listings_by_userid():
     # print(current_user.user_id)
@@ -137,7 +137,7 @@ def get_listings_by_userid():
 
 
 
-@listing_endpoints.route('/renter_dashboard/add_a_new_listing', methods=['GET', 'POST'])
+@listing_endpoints.route('/landlord_dashboard/add_a_new_listing', methods=['GET', 'POST'])
 @login_required
 def add_a_new_listing():
     if request.method == 'GET':
@@ -172,7 +172,7 @@ def add_a_new_listing():
     #     return abort(400)
 
 
-@listing_endpoints.route('/renter_dashboard/delete', methods=['POST'])
+@listing_endpoints.route('/landlord_dashboard/delete', methods=['POST'])
 @login_required
 def delete_a_listing():
     house_id = request.form["house_id"]

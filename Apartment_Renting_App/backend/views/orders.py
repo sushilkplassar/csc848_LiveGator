@@ -38,7 +38,7 @@ def customer_view_orders():
 
 
 
-@order_endpoints.route('/renter_dashboard/view_orders', methods=['GET'])
+@order_endpoints.route('/landlord_dashboard/view_orders', methods=['GET'])
 @login_required
 def renter_view_orders():
     renter_id = current_user.user_id
@@ -57,7 +57,7 @@ def renter_view_orders():
 
 
 
-@order_endpoints.route('/renter_dashboard/view_pending_request', methods=['GET'])
+@order_endpoints.route('/landlord_dashboard/view_pending_request', methods=['GET'])
 @login_required
 def renter_view_pending_request():
     renter_id = current_user.user_id

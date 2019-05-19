@@ -34,7 +34,7 @@ def customer_view_msg():
     return render_template("customer_messages.html", data = result)
 
 
-@message_endpoints.route('/renter_dashboard/view_msg', methods=['GET'])#return list of customer usernmae
+@message_endpoints.route('/landlord_dashboard/view_msg', methods=['GET'])#return list of customer usernmae
 @login_required
 def renter_view_msg():
     renter_id = current_user.user_id
@@ -91,7 +91,7 @@ def customer_view_msg_detail(username):
     return render_template("customer_messages_detail.html", data = result)
 
 
-@message_endpoints.route('/renter_dashboard/view_msg/<username>', methods=['GET'])
+@message_endpoints.route('/landlord_dashboard/view_msg/<username>', methods=['GET'])
 @login_required
 def renter_view_msg_detail(username):
     renter_id = current_user.user_id
@@ -133,7 +133,7 @@ def customer_send_msg(username):
     return redirect(redirect_url)
 
 
-@message_endpoints.route('/renter_dashboard/view_msg/<username>/send_msg', methods=['POST'])
+@message_endpoints.route('/landlord_dashboard/view_msg/<username>/send_msg', methods=['POST'])
 @login_required
 def renter_send_msg(username):
     renter_id = current_user.user_id
