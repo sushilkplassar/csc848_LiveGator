@@ -142,7 +142,7 @@ def renter_send_msg(username):
     customer_id = customer[0]
     msg_to_send = request.form["message"]
     send_msg(renter_id, customer_id, renter_id, msg_to_send)
-    redirect_url = '/renter_dashboard/view_msg/' + username
+    redirect_url = '/landlord_dashboard/view_msg/' + username
     return redirect(redirect_url)
 
 

@@ -6,7 +6,7 @@
 </head>
 <body>
 <a href="/search_results">Home</a>
-    <form method="GET" action="/renter_dashboard/view_listings">
+    <form method="GET" action="/landlord_dashboard/view_listings">
         <a>Sort by:</a>
         <select name="sort">
           <option value=0>Sort by</option>
@@ -42,7 +42,7 @@
                     <p>Approved? {% if  item.approved == 1%} Yes {% else %} No {% endif %}</p>
                     <p>Created on: {{item.create_date}}</p>
                   </div>
-                  <form method="POST" action="/renter_dashboard/delete">
+                  <form method="POST" action="/landlord_dashboard/delete">
                       <button name="house_id" value={{item.house_id}}>Delete this listing</button>
                   </form>
                 {% endif %}

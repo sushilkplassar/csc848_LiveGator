@@ -164,9 +164,17 @@
                 <div class="card-body">
                      <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <h4 class="my-1 mb-1">Contact Seller: </h4>
+                            {% if data.is_available == 1 and data.deleted == 0 and data.approved == 1 %}
+                                {% if not current_user.user_id or current_user.user_id != data.landlord_id%}
+                                    <form method="POST" action="/send_direct_msg">
+                                        <input type="text" placeholder="Message landlord" name="message">
+                                        <button name="house_id" value={{data.house_id}}>Message landlord</button>
+                                    </form>
+                                {% endif %}
+                            {% endif %}
                         </li>
                         <li class="list-group-item">
+
                          {% if data.is_available == 1 and data.deleted == 0 and data.approved == 1 %}
                             {% if not current_user.user_id or current_user.user_id != data.landlord_id%}
                                 <form method="POST" action="/send_renting_request">

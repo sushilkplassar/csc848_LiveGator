@@ -176,7 +176,7 @@ def add_a_new_listing():
     parking_count = request.form.get("parking_count", "N/A")
     listings.add_a_new_listing(user_id, house_name, type, description, price, size, distance, number, street, city, state, zipcode, image_url, bedroom_count, bathroom_count, parking_count)
 
-    return redirect('/renter_dashboard/view_listings')
+    return redirect('/landlord_dashboard/view_listings')
     # except:
     #     return abort(400)
 

@@ -102,7 +102,7 @@ def place_order():
     renter_id = pending_request[1]
     customer_id = pending_request[2]
     orders.place_order(house_id, renter_id, customer_id)
-    return redirect('/renter_dashboard/view_pending_request')
+    return redirect('/landlord_dashboard/view_pending_request')
 
 
 @order_endpoints.route('/delete_request', methods=['POST'])
@@ -112,7 +112,7 @@ def delete_request():
     # renter_id = current_user.user_id
     # customer_id = request.form['customer_id']
     orders.delete_renting_request(house_id)
-    return redirect('/renter_dashboard/view_pending_request')
+    return redirect('/landlord_dashboard/view_pending_request')
 
 
 @order_endpoints.route('/send_renting_request', methods=['POST'])
