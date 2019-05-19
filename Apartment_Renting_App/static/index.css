@@ -10789,3 +10789,15 @@ body {
         min-width: 500px;
     }
 }
+
+.icon {
+  display: block;
+  height: 225px;
+  width: 225px;
+  text-align: center;
+  margin: auto;
+}
+
+.icon:hover {
+  background-color: dodgerblue;
+}
