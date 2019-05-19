@@ -21,7 +21,7 @@ def customer_dashboard():
     return render_template('customer_dashboard.html')
 
 
-@dashboard_endpoints.route('/renter_dashboard', methods=['GET'])
+@dashboard_endpoints.route('/landlord_dashboard', methods=['GET'])
 @login_required
 def renter_dashboard():
     return render_template('renter_dashboard.html')

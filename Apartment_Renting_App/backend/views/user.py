@@ -50,7 +50,7 @@ def login():
     flash('Logged in successfully')
     print("Logged in successfully")
     # print(request.form)
-    return redirect('/')
+    return redirect('/search_results')
 
 
 

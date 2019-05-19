@@ -82,8 +82,17 @@ def search_results():
     sort = request.args.get("sort", -1)
     type = request.args.get("type", "")
     data = listings.display_all_listings()
+    username = "visitor"
+    role = -1
+    try:
+        loggedin_user = user.get_user_by_id(current_user.user_id)
+        username = loggedin_user[1]
+        role = loggedin_user[4]
+    except:
+        username = "visitor"
+        role = -1
     return render_template('home_search_results.html', data=data, current_user=current_user,
-                           key=search_key, sort=sort, type=type)
+                           username=username, key=search_key, sort=sort, type=type)
 
 
 @app.route("/search", methods=['GET', 'POST'])
@@ -92,8 +101,17 @@ def search():
     sort = request.args.get("sort", -1)
     type = request.args.get("type", "")
     data = listings.display_all_listings()
+    username = "visitor"
+    role = -1
+    try:
+        loggedin_user = user.get_user_by_id(current_user.user_id)
+        username = loggedin_user[1]
+        role = loggedin_user[4]
+    except:
+        username = "visitor"
+        role = -1
     return render_template('home_search_results.html', data=data, current_user=current_user,
-                            key=search_key, sort = sort, type = type)
+                           username=username, key=search_key, sort=sort, type=type)
 
 
 
