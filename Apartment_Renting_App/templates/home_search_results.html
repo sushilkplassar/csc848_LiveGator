@@ -138,7 +138,7 @@
 
 
 {% for item in data %}
-    <li>
+    <ul>
         <div>
             <div class="container">
                 <div class="row">
@@ -148,9 +148,9 @@
                     <div class="col-md-12">
                         <div class="media">
                             <a href='/all_listings/{{ item.house_id}}'>
-                                <img class="img-responsive"  src="{{ url_for('static', filename=item.image_url) }}"/>
+                                <img class="card-img img-responsive" style="width: 200px; height: 200px;"  src="{{ url_for('static', filename=item.image_url) }}"/>
 
-                                <div class="media-body">
+                                <div class="media-body mx-3">
                                     <a href='/all_listings/{{ item.house_id}}' class="media-heading">{{item.house_name}}</a>
                                     <div class="media-heading">{{item.number}}  {{item.street}}  {{item.city}} {{item.state}} {{item.zipcode}}<div>
                                         <div class="meta"> ${{item.price}} • {{ item.type }} • {{item.size}} sq. ft. </div>
@@ -165,7 +165,7 @@
                 </div>
             </div>
         </div>
-    </li>
+    </ul>
     </center>
     </li>
 {% endfor %}
