@@ -140,3 +140,5 @@ footer.footer {
   background-color: dodgerblue;
 }
 
+ #navBarSearchForm input[type=text]{width:430px !important;}
+
