@@ -10798,10 +10798,6 @@ body {
   margin: auto;
 }
 
-.icon:hover {
-  background-color: dodgerblue;
-}
-
 .button {
   background-color: #2C3E50;
   border: none;
@@ -10839,4 +10835,11 @@ body {
 
 .forgot_password {
   float: right;
+}
+
+.button_wrapper {
+  align: left;
+  padding-top: 2px;
+  padding-left: 8px;
+  padding-bottom: 2px;
 }
