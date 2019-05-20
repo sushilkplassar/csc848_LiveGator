@@ -60,13 +60,13 @@ def signup():
         return render_template('signup.html')
     try:
     # print(request.form['is_student'])
-        password = request.form['password']
+        password = request.form['Password']
         hashed_pwd = generate_password_hash(password)
         is_sutdent = False
         if "is_student" in request.form:
             is_sutdent = True
         # print(request.form)
-        user.signup(request.form['username'], hashed_pwd, request.form['email'], is_sutdent)
+        user.signup(request.form['Username'], hashed_pwd, request.form['Email'], is_sutdent)
     except:
         flash('Duplicate username. Please try again')
         print('Duplicate username. Please try again')
