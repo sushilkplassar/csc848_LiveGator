@@ -92,7 +92,7 @@ def search_results():
         username = "visitor"
         role = -1
     return render_template('home_search_results.html', data=data, current_user=current_user,
-                           username=username, key=search_key, sort=sort, type=type)
+                           username=username, role = role, key=search_key, sort=sort, type=type)
 
 
 @app.route("/search", methods=['GET', 'POST'])
@@ -111,7 +111,7 @@ def search():
         username = "visitor"
         role = -1
     return render_template('home_search_results.html', data=data, current_user=current_user,
-                           username=username, key=search_key, sort=sort, type=type)
+                           username=username, role = role, key=search_key, sort=sort, type=type)
 
 
 
