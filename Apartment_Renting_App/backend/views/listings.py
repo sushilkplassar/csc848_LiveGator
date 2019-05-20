@@ -186,4 +186,4 @@ def add_a_new_listing():
 def delete_a_listing():
     house_id = request.form["house_id"]
     listings.delete_listing(house_id)
-    return redirect('renter_dashboard/view_listings')
+    return redirect('landlord_dashboard/view_listings')
