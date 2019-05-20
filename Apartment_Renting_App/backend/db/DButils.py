@@ -198,11 +198,11 @@ def get_msg_detail(renter_id, customer_id):
     conn.close()
     return data
 
-def send_msg(renter_id, customer_id, sender, msg):
+def send_msg(renter_id, customer_id, house_id, sender, msg):
     conn.connect()
     cur = conn.cursor()
-    sql_str = "INSERT INTO MESSAGE (landlord_id, customer_id, sender, message, date) VALUES (%s, %s, %s, %s, NOW())"
-    cur.execute(sql_str, (renter_id, customer_id, sender, msg))
+    sql_str = "INSERT INTO MESSAGE (landlord_id, customer_id, house_id, sender, message, date) VALUES (%s, %s, %s, %s, %s, NOW())"
+    cur.execute(sql_str, (renter_id, customer_id, house_id, sender, msg))
     conn.commit()
 
 

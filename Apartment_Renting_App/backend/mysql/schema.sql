@@ -20,18 +20,18 @@ CREATE TABLE  LISTINGS
   house_name  VARCHAR(100),
   type        VARCHAR(100),
   description VARCHAR(1000),
-  price       FLOAT,
-  size        FLOAT,
-  distance    FLOAT,
-  number      INT,
+  price       VARCHAR(100),
+  size        VARCHAR(100),
+  distance    VARCHAR(100),
+  number      VARCHAR(100),
   street      VARCHAR(100),
   city        VARCHAR(30),
   state       CHAR(20),
   zipcode     CHAR(5),
   image_url   VARCHAR(500),
-  bedroom_count   FLOAT,
-  bathroom_count  FLOAT,
-  parking_count   FLOAT,
+  bedroom_count   VARCHAR(100),
+  bathroom_count  VARCHAR(100),
+  parking_count   VARCHAR(100),
   isAvailable BOOLEAN DEFAULT TRUE,
   create_date DATE,
   approved    BOOLEAN DEFAULT FALSE,
@@ -57,8 +57,9 @@ CREATE TABLE PENDING_REQUEST
 
 CREATE TABLE MESSAGE
 (
-  landlord_id   INT NOT NULL REFERENCES USER(user_id),
+  landlord_id INT NOT NULL REFERENCES USER(user_id),
   customer_id INT NOT NULL REFERENCES USER(user_id),
+  house_id    INT NOT NULL REFERENCES LISTINGS(house_id),
   sender      VARCHAR(100) NOT NULL REFERENCES USER(username),
   message     VARCHAR(500),
   date        DATE
@@ -74,16 +75,16 @@ INSERT INTO USER (username, password, email, role, isStudent) VALUES
 
 
 INSERT INTO LISTINGS (landlord_id, house_name, type, description, price, size, distance, number, street, city, state, zipcode, image_url, bedroom_count, bathroom_count, parking_count, isAvailable, create_date, approved) VALUES
-(1, 'Foster', 'House','This is my fantastic house in foster city',1200, 500, 15.4, 861, 'Sanbarra st', 'Foster City', 'CA', 94404, 'Foster_1.jpg Foster_2.jpg', 2, 2, 2, TRUE, NOW(), TRUE),
+(3, 'Foster', 'House','This is my fantastic house in foster city',1200, 500, 15.4, 861, 'Sanbarra st', 'Foster City', 'CA', 94404, 'Foster_1.jpg Foster_2.jpg', 2, 2, 2, TRUE, NOW(), TRUE),
 (2, 'South SF', 'Apartment','Beautiful brand new house in South SF with spacious bedroom', 1000, 300, 2.4, 181, 'Fremont st', 'San Francisco', 'CA', 94105, 'SF_1.jpeg', 1, 1, 1, TRUE, NOW(), TRUE),
-(2, 'Downtown SF', 'Condo','Room at the heat of SF', 1500, 500, 8, 201, 'Van Ness Ave', 'San Francisco', 'CA', 94102, 'Downtown_SF_1.jpg Downtown_SF_2.jpg', 2, 1.5, 2, FALSE, NOW(), TRUE);
+(2, 'Downtown SF', 'Condo','Room at the heat of SF', 1500, 500, 8, 201, 'Van Ness Ave', 'San Francisco', 'CA', 94102, 'Downtown_SF_1.jpg Downtown_SF_2.jpg', 2, 1.5, 2, TRUE, NOW(), TRUE),
+(4, 'Single room near SJSU', 'Single room','Nice room near SJSU', 500, 300, 50, 868, 'S 5th st', 'San Jose', 'CA', 95112, '', 1, 1, 1, TRUE, NOW(), TRUE);
 
 
 
-INSERT INTO MESSAGE (landlord_id, customer_id, sender, message, date) VALUES
-(2, 4, 4, 'Hi Alex, my name is Daniel. Im interested in renting your apartment in South SF', NOW()),
-(1, 2, 2, 'Hi Kim, my name is Alex. Im interested in renting your house in Foster City, and I would like to schedule a tour', NOW()),
-(1, 2, 1, 'Hi Alex, thanks for your message. I can meet you on next Tuesday.', NOW());
+INSERT INTO MESSAGE (landlord_id, customer_id, house_id, sender, message, date) VALUES
+(2, 4, 2, 2, 'Hi Alex, my name is Daniel. Im interested in renting your apartment in South SF', NOW()),
+(3, 2, 1, 1, 'Hi Kim, my name is Alex. Im interested in renting your house in Foster City, and I would like to schedule a tour', NOW());
 
 
 INSERT INTO ORDERS (house_id, landlord_id, customer_id, create_date) VALUES
