@@ -166,7 +166,7 @@
         <div class="card-deck">
             {% for item in data %}
                 <div class="card">
-                    <img class="card-img-top" src="{{ url_for('static', filename=item.image_url) }}" alt="Card image cap" style="width:350px;height:350px">
+                    <img class="card-img-top" src="{{ url_for('static', filename=item.image_url) }}" alt="Card image cap" >
                     <div class="card-body">
                         <h5 class="card-title">{{item.house_name}}</h5>
                         <p class="card-text"> ${{item.price}} </p>
