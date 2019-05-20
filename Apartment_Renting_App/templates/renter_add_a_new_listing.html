@@ -18,76 +18,82 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <!-- Custom styles for this template-->
-    <link href="../static/css.css" rel="stylesheet">
+    <link href="../static/index.css" rel="stylesheet">
 
 </head>
 
 <body id="page-top">
-<disclaimer style="text-align:center" >SFSU Software Engineering Project CSC 648-848, Spring 2019. For Demonstration Only</disclaimer>
+<p class="text-center">SFSU Software Engineering Project CSC 648-848, Spring 2019. For Demonstration Only</p>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-dark ">
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+<!-- Nav -->
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/">LiveGator</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/search_results">
-                    <span>Browse</span></a>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/landlord_dashboard/add_a_new_listing">
                     <span>Post</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/landlord_dashboard">
-                    <span>Landlord dashboard</span></a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="/customer_dashboard">
-                    <span>Customer dashboard</span></a>
+                    <span>My Profile</span></a>
+
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/about">
                     <span>About Us</span></a>
             </li>
+            <li>
+                <form class="form-inline my-2 my-lg-0" method="GET" action = "/search" >
+                                <select name="sort">
+              <option value=0 {% if sort=='0' %} selected {% endif %}>Newly added first</option>
+              <option value=1 {% if sort=='1' %} selected {% endif %}>Price low to high</option>
+{#              <option value=2>Price high to low</option>#}
+{#              <option value=3>Size low to high</option>#}
+{#              <option value=4>Size high to low</option>#}
+              <option value=5 {% if sort=='5' %} selected {% endif %}>Distance low to high </option>
+{#              <option value=6>Distance high to low</option>#}
+            </select>
+
+            <select name="type">
+              <option value="">Select listing types</option>
+              <option value="Condo" {% if type=='Condo' %} selected {% endif %}>Condos</option>
+              <option value="House" {% if type=='House' %} selected {% endif %}>Houses</option>
+              <option value="Apartment" {% if type=='Apartment' %} selected {% endif %}>Apartments</option>
+              <option value="Townhome" {% if type=='Townhome' %} selected {% endif %}>Townhomes</option>
+              <option value="Single room" {% if type=='Single room' %} selected {% endif %}>Single rooms</option>
+            </select>
+{#                <input type="text" placeholder="Min Price" name="price_low">#}
+{#                <input type="text" placeholder="Max Price" name="price_high">#}
+{#                <input type="text" placeholder="Min Size" name="size_low">#}
+{#                <input type="text" placeholder="Max Size" name="size_high">#}
+{#                <input type="text" placeholder="Min Distance" name="distance_low">#}
+{#                <input type="text" placeholder="Max Distance" name="distance_high">#}
+                    <input class="form-control mr-sm-2" type="text" size="35" placeholder="Search by listing name, listing type, description, or address" name="search_key" value = {{ key }}>
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </li>
         </ul>
-    </div>
-    <div class="mx-auto order-0">
-        <a class="navbar-brand mx-auto" href="/">LiveGator</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <!-- Log in and signup -->
+
         <ul class="navbar-nav ml-auto">
             {% if current_user.user_id %}
-                <li class="nav-item">
-{#                    <span>Hi {{ username }}!</span>#}
-
-                    <a class="nav-link">
-                    <i class="far fa-user"></i>
-                    <span>Hi {{ username }}!</span> </a>
-
+                <li class="nav-item disabled">
+                    <a class="nav-link disabled">Hi {{ username }}!</a>
                 </li>
 
-
-
-                <li class="nav-item">
-                    <form method="POST" action="/logout">
-                        <button>logout</button>
-                    </form>
-{#                #}
-{#                <form class="nav-link" method = "POST" href="/logout">#}
-{#                    <i class="far fa-user"></i>#}
-{#                    <span>Logout</span> </form>#}
-
-
-                </li>
+                <form method="POST" action="/logout">
+                    <button class = "btn btn-outline-light my-2 my-sm-0">Logout</button>
+                </form>
             {% else %}
                 <li class="nav-item">
-                <a class="nav-link" href="/signup">
-                    <i class="far fa-user"></i>
+                    <a class="nav-link" href="/signup">
+                        <i class="far fa-user"></i>
 
-                    <span>Sign Up</span> </a>
+                        <span>Sign Up</span> </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/login">
@@ -95,18 +101,20 @@
                         <span >Login</span> </a>
                 </li>
             {% endif %}
+
         </ul>
+
     </div>
 </nav>
-
+<!-- End Nav-->
 
         <!-- Begin Page Content -->
         <div class="container-fluid" style="height: 100%; width: 100%">
 			<div class="row">
-				<div class="col-sm-3"></div>
+				<div class="col-sm-4"></div>
 				<div class="col-sm-4" style="padding-left: 20px">
 
-					<form method="POST" action="/landlord_dashboard/add_a_new_listing" enctype="multipart/form-data">
+					<form method="POST" action="/landlord_dashboard/add_a_new_listing" enctype="multipart/form-data"class="needs-validation" novalidate>
 
                         <!--Listing Info -->
                         <h3>Post</h3>
@@ -116,48 +124,46 @@
 							<div class="invalid-feedback">*Required</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label">Listing Type:</label>
+							<label class="control-label">Listing Type:*</label>
                             <br>
-                                <select name="type" required>
-                                  <option value="">-</option>
-                                  <option value="Condo">Condo</option>
-                                  <option value="House">House</option>
-                                  <option value="Apartment">Apartment</option>
-                                  <option value="Townhomes">Townhouse</option>
-                                  <option value="Single room">Single room</option>
-                                </select>
+                            <select class="selectpicker form-control" name="type" required>
+                              <option value="">-</option>
+                              <option value="Condo">Condo</option>
+                              <option value="House">House</option>
+                              <option value="Apartment">Apartment</option>
+                              <option value="Townhomes">Townhouse</option>
+                              <option value="Single room">Single room</option>
+                            </select>
 							<div class="invalid-feedback">*Required</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label">Price:</label>
+							<label class="control-label">Price:*</label>
 							<input type="text" class="form-control" placeholder="Price" name="price" maxlength="40" required>
 							<div class="invalid-feedback">*Required</div>
 						</div>
                         <div class="form-group">
-							<label class="control-label">Size:</label>
+							<label class="control-label">Size:*</label>
 							<input type="text" class="form-control" placeholder="Appox. Sq. Footage" name="size" maxlength="40" required>
 							<div class="invalid-feedback">*Required</div>
 						</div>
                         <div class="form-group">
-							<label class="control-label">Distance:</label>
-							<input type="text" class="form-control" placeholder="Distance" name="distance" maxlength="40" name="distance" required>
-							<div class="invalid-feedback">*Required</div>
-						</div>
-                        <div class="form-group">
-                            <label class="control-label">Description</label>
-                            <input type="text" class="form-control" placeholder="Description" name="description">
+                            <label class="control-label">Description*</label>
+                            <input type="text" class="form-control" placeholder="Description" name="description" required>
+                            <div class="invalid-feedback">*Required</div>
                         </div>
 
+                        <hr>
                         <!-- Location -->
                         <h3>Location</h3>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-sm-2">
-                                    <label for="address">No.</label>
-                                    <input type="text" class="form-control" placeholder="#" name="number">
+                                <div class="col-sm-3">
+                                    <label for="address">No.*</label>
+                                    <input type="text" class="form-control" placeholder="#" name="number" required>
+                                    <div class="invalid-feedback">*Required</div>
                                 </div>
-                                <div class="col-sm-10">
-                                    <label for="address">Street Name:</label>
+                                <div class="col-sm-9">
+                                    <label for="address">Street Name:*</label>
                                     <input type="text" class="form-control" name="street" id="address" placeholder="Main St" required>
                                     <div class="invalid-feedback">*Required</div>
                                 </div>
@@ -169,38 +175,40 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputCity">City:</label>
+                                <label for="inputCity">City:*</label>
                                 <input type="text" class="form-control" name="city" id="inputCity" required>
                                 <div class="invalid-feedback">*Required</div>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="state">State:</label>
-                                <input type="text" class="form-control" placeholder="State" name="state">
+                                <label for="state">State:*</label>
+                                <input type="text" class="form-control" placeholder="State" name="state" required>
+                                <div class="invalid-feedback">*Required</div>
                             </div>
                             <div class="form-group col-md-2">
-                                  <label for="zipcode">Zip:</label>
+                                  <label for="zipcode">Zip:*</label>
                                   <input type="text" class="form-control" name="zipcode" id="zipcode" minlength="5" maxlength="5" required>
                                   <div class="invalid-feedback">*Required</div>
                             </div>
                         </div>
 
+                        <hr>
                         <!-- Amenities -->
                         <h3>Amenities</h3>
                         <div class="form-group">
-                            <label for="bedroom_count">Bedroom Count:</label><br>
-                            <input type="number" min="0" name="bedroom_count" placeholder="0" required>
+                            <label for="bedroom_count">Bedroom Count:*</label><br>
+                            <input class="form-control" type="number" min="0" name="bedroom_count" placeholder="-" required>
                             <div class="invalid-feedback">*Required</div>
                         </div>
 
                         <div class="form-group">
-                            <label for="bathroom_count">Bath Count:</label><br>
-                            <input type="number" min="0" name="bathroom_count" placeholder="0" required>
+                            <label for="bathroom_count">Bath Count:*</label><br>
+                            <input class="form-control" type="number" min="0" name="bathroom_count" placeholder="-" required>
                             <div class="invalid-feedback">*Required</div>
                         </div>
 
                         <div class="form-group">
-                            <label for="parking_count">Parking Space Count:</label><br>
-                            <input type="number" min="0" name="parking_count" placeholder="0" required>
+                            <label for="parking_count">Parking Space Count:*</label><br>
+                            <input class="form-control" type="number" min="0" name="parking_count" placeholder="-" required>
                             <div class="invalid-feedback">*Required</div>
                         </div>
 
@@ -209,10 +217,11 @@
                             <input type="file" name="photos" multiple="" accept=".jpg,.jpeg,.png">
                             <div class="invalid-feedback">*Required</div>
                         </div>
-                        <button type="submit">Post</button>
+                        <button class="block" type="submit">Submit</button>
+                        Note: Postings are subject to review. May take up to 24 hours for approval.
 					</form>
 				</div>
-				<div class="col-sm-5"></div>
+				<div class="col-sm-4"></div>
 			</div>
         </div>
           <!--end of contatiner-->
@@ -235,22 +244,16 @@
   </div>
   <!-- End of Page Wrapper -->
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
+<script type="text/javascript">
+    var form = document.querySelector('.needs-validation');
+    form.addEventListener('submit', function(event){
+        if(form.checkValidity() == false){
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+    })
+</script>
 
 </body>
 
