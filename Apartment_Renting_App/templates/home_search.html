@@ -18,7 +18,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <!-- Custom styles for this template-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
     <link href="../static/index.css" rel="stylesheet">
+
 
 </head>
 
@@ -47,9 +50,9 @@
                 <a class="nav-link" href="/about">
                     <span>About Us</span></a>
             </li>
-            <li>
-                <form class="form-inline my-2 my-lg-0" method="GET" action = "/search" >
-                                <select name="sort">
+            <div class="mx-auto">
+                <form class="form-inline my-2 my-lg-0 " method="GET" action = "/search" >
+                                <select name="sort" class="form-control mr-sm-2">
               <option value=0 {% if sort=='0' %} selected {% endif %}>Newly added first</option>
               <option value=1 {% if sort=='1' %} selected {% endif %}>Price low to high</option>
 {#              <option value=2>Price high to low</option>#}
@@ -59,7 +62,7 @@
 {#              <option value=6>Distance high to low</option>#}
             </select>
 
-            <select name="type">
+            <select name="type" class="form-control mr-sm-2">
               <option value="">Select listing types</option>
               <option value="Condo" {% if type=='Condo' %} selected {% endif %}>Condos</option>
               <option value="House" {% if type=='House' %} selected {% endif %}>Houses</option>
@@ -76,8 +79,11 @@
                     <input class="form-control mr-sm-2" type="text" size="35" placeholder="Search by listing name, listing type, description, or address" name="search_key" value = {{ key }}>
                     <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
                 </form>
+            </div>
             </li>
         </ul>
+
+
         <!-- Log in and signup -->
 
         <ul class="navbar-nav ml-auto">
@@ -104,10 +110,8 @@
             {% endif %}
 
         </ul>
-
     </div>
 </nav>
-<!-- End Nav-->
 
 
 <!-- Main Content -->
