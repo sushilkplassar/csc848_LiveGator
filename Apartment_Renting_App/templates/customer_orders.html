@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer order</title>
+</head>
+<body>
+<a href="/">Home</a>
+    <b><h3><u>All orders</u></h3></b>
+    {% for item in data %}
+        <li>
+        <div>
+          <div >
+            Listing: <a href='/all_listings/{{ item.house_id}}'> {{item.house_name}} </a>
+            <p>Customer: {{item.customer_username}}</p>
+            <p>Landlord: {{item.landlord_username}}</p>
+            <p>Date: {{item.create_date}}</p>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+
+</body>
+</html>

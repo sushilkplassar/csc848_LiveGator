@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Post Listing</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <!-- Custom styles for this template-->
+    <link href="../static/css.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+<disclaimer style="text-align:center" >SFSU Software Engineering Project CSC 648-848, Spring 2019. For Demonstration Only</disclaimer>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/search_results">
+                        <span>Rent</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/renter_dashboard/add_a_new_listing">
+                        <span>Post</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/customer_dashboard">
+                        <span>My Profile</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">
+                        <span>About Us</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="/">LiveGator</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup">
+                        <i class="far fa-user"></i>
+
+                        <span>Sign Up</span> </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span >Login</span> </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid" style="height: 100%; width: 100%">
+			<div class="row">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-4" style="padding-left: 20px">
+
+					<form method="POST" action="/renter_dashboard/add_a_new_listing">
+
+                        <!--Listing Info -->
+                        <h3>Post</h3>
+						<div class="form-group">
+							<label class="control-label">Listing Name:*</label>
+							<input type="text" class="form-control" placeholder="Listing Name" name="house_name" maxlength="40" required>
+							<div class="invalid-feedback">*Required</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Listing Type:</label>
+                            <br>
+                                <select name="type" required>
+                                  <option value="">-</option>
+                                  <option value="Condo">Condo</option>
+                                  <option value="House">House</option>
+                                  <option value="Apartment">Apartment</option>
+                                  <option value="Townhomes">Townhouse</option>
+                                  <option value="Single room">Single room</option>
+                                </select>
+							<div class="invalid-feedback">*Required</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Price:</label>
+							<input type="text" class="form-control" placeholder="Price" name="price" maxlength="40" required>
+							<div class="invalid-feedback">*Required</div>
+						</div>
+                        <div class="form-group">
+							<label class="control-label">Size:</label>
+							<input type="text" class="form-control" placeholder="Appox. Sq. Footage" name="size" maxlength="40" required>
+							<div class="invalid-feedback">*Required</div>
+						</div>
+                        <div class="form-group">
+							<label class="control-label">Distance:</label>
+							<input type="text" class="form-control" placeholder="Distance" name="distance" maxlength="40" name="distance" required>
+							<div class="invalid-feedback">*Required</div>
+						</div>
+                        <div class="form-group">
+                            <label class="control-label">Description</label>
+                            <input type="text" class="form-control" placeholder="Description" name="description">
+                        </div>
+
+                        <!-- Location -->
+                        <h3>Location</h3>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <label for="address">No.</label>
+                                    <input type="text" class="form-control" placeholder="#" name="number">
+                                </div>
+                                <div class="col-sm-10">
+                                    <label for="address">Street Name:</label>
+                                    <input type="text" class="form-control" name="street" id="address" placeholder="Main St" required>
+                                    <div class="invalid-feedback">*Required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address2">Address 2:</label>
+                            <input type="text" class="form-control" name="address2" id="address2" placeholder="Apartment, studio, or floor">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputCity">City:</label>
+                                <input type="text" class="form-control" name="city" id="inputCity" required>
+                                <div class="invalid-feedback">*Required</div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="state">State:</label>
+                                <input type="text" class="form-control" placeholder="State" name="state">
+                            </div>
+                            <div class="form-group col-md-2">
+                                  <label for="zipcode">Zip:</label>
+                                  <input type="text" class="form-control" name="zipcode" id="zipcode" minlength="5" maxlength="5" required>
+                                  <div class="invalid-feedback">*Required</div>
+                            </div>
+                        </div>
+
+                        <!-- Amenities -->
+                        <h3>Amenities</h3>
+                        <div class="form-group">
+                            <label for="bedroom_count">Bedroom Count:</label><br>
+                            <input type="number" min="0" name="bedroom_count" placeholder="0" required>
+                            <div class="invalid-feedback">*Required</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bathroom_count">Bath Count:</label><br>
+                            <input type="number" min="0" name="bathroom_count" placeholder="0" required>
+                            <div class="invalid-feedback">*Required</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="parking_count">Parking Space Count:</label><br>
+                            <input type="number" min="0" name="parking_count" placeholder="0" required>
+                            <div class="invalid-feedback">*Required</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="image_url">Upload Image:</label><br>
+                            <input type="file" name="photos" multiple="">
+                            <div class="invalid-feedback">*Required</div>
+                        </div>
+                        <button type="submit">Post</button>
+					</form>
+				</div>
+				<div class="col-sm-5"></div>
+			</div>
+        </div>
+          <!--end of contatiner-->
+      </div>
+       <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; LiveGator 2019</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
+
+</body>
+
+</html>
