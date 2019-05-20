@@ -193,32 +193,47 @@
     <button type="submit"><i class="fa fa-search"></i></button>
 </form>
 <center>
-    {% for item in data %}
-        <li>
-            <div>
-<div class="container">
-        <div class="row">
-        <div class="col-md-12"></div>
+    <div class="card-deck">
+            {% for item in data %}
+                <div class="card">
+                    <img class="card-img-top" src="{{ url_for('static', filename=item.image_url) }}" alt="Card image cap" style="width:350px;height:350px">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.house_name}}</h5>
+                        <p class="card-text"> ${{item.price}} </p>
+                        <p class="card-text">{{item.bedroom_count}} bed, {{item.bathroom_count}} bath, {{item.parking_count}} parking </p>
+                        <p class="card-text"> {{item.number}}  {{item.street}} </p>
+                        <p class="card-text">{{item.city}} {{item.state}} {{item.zipcode}}</p>
+                        <a href="/all_listings/{{ item.house_id}}" class="btn btn-dark stretched-link" style="color:">View Property</a>
+                    </div>
+                </div>
+            {% endfor %}
     </div>
-	<div class="row listings">
-		<div class="col-md-12">
-		    <div class="media media-video">
-		        <a href='/all_listings/{{ item.house_id}}'>
-		           <img class="img-responsive" src="{{ url_for('static', filename=item.image_url) }}" style="width:360px;height:360px;" ></img>
-		        <div class="media-body">
-		            <a href='/all_listings/{{ item.house_id}}' class="media-heading">{{item.house_name}}</a>
-                    <div class="media-heading">{{item.number}}  {{item.street}}  {{item.city}} {{item.state}} {{item.zipcode}}<div>
-		            <div class="meta"> ${{item.price}} • {{ item.type }} • {{item.size}} sq. ft. </div
-                        <p> Layout: {{item.bedroom_count}} bedroom(s), {{item.bathroom_count}} bathroom(s), {{item.parking_count}} parking spot(s) </p>
-		            <p> Distance from Campus: {{item.distance}} mi.</p>
-		        </div>
-		    </div>
-		</div>
-
-        </div>
-            </div>
-        </li>
-    {% endfor %}
+{#    {% for item in data %}#}
+{#        <li>#}
+{#            <div>#}
+{#<div class="container">#}
+{#        <div class="row">#}
+{#        <div class="col-md-12"></div>#}
+{#    </div>#}
+{#	<div class="row listings">#}
+{#		<div class="col-md-12">#}
+{#		    <div class="media media-video">#}
+{#		        <a href='/all_listings/{{ item.house_id}}'>#}
+{#		           <img class="img-responsive" src="{{ url_for('static', filename=item.image_url) }}" style="width:360px;height:360px;" ></img>#}
+{#		        <div class="media-body">#}
+{#		            <a href='/all_listings/{{ item.house_id}}' class="media-heading">{{item.house_name}}</a>#}
+{#                    <div class="media-heading">{{item.number}}  {{item.street}}  {{item.city}} {{item.state}} {{item.zipcode}}<div>#}
+{#		            <div class="meta"> ${{item.price}} • {{ item.type }} • {{item.size}} sq. ft. </div>#}
+{#                        <p> Layout: {{item.bedroom_count}} bedroom(s), {{item.bathroom_count}} bathroom(s), {{item.parking_count}} parking spot(s) </p>#}
+{#		            <p> Distance from Campus: {{item.distance}} mi.</p>#}
+{#		        </div>#}
+{#		    </div>#}
+{#		</div>#}
+{##}
+{#        </div>#}
+{#            </div>#}
+{#        </li>#}
+{#    {% endfor %}#}
 
 </center>
 <!-- js stuff -->

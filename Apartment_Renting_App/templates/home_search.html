@@ -161,39 +161,22 @@
 <div id="content">
     <div class = "container">
         <div class =p-2>
-            <h2 class = text-center > Featured Homes  </h2>
+            <h2 class = text-center > Newly Added </h2>
         </div>
         <div class="card-deck">
-            <div class="card">
-                <img class="card-img-top" src="../static/photos/Foster_1.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">House for Rent</h5>
-                    <p class="card-text"> $1200 </p>
-                    <p class="card-text">2 bed 2 bath 2 parking </p>
-                    <p class="card-text"> 861 Sanbarra st Foster City CA 94404</p>
-                    <a href="/all_listings/1" class="btn btn-dark stretched-link">View Property</a>
+            {% for item in data %}
+                <div class="card">
+                    <img class="card-img-top" src="{{ url_for('static', filename=item.image_url) }}" alt="Card image cap" style="width:350px;height:350px">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.house_name}}</h5>
+                        <p class="card-text"> ${{item.price}} </p>
+                        <p class="card-text">{{item.bedroom_count}} bed, {{item.bathroom_count}} bath, {{item.parking_count}} parking </p>
+                        <p class="card-text"> {{item.number}}  {{item.street}} </p>
+                        <p class="card-text">{{item.city}} {{item.state}} {{item.zipcode}}</p>
+                        <a href="/all_listings/{{ item.house_id}}" class="btn btn-dark stretched-link">View Property</a>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" src="../static/photos/Foster_1.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">House for Rent</h5>
-                    <p class="card-text"> $1200 </p>
-                    <p class="card-text">2 bed 2 bath 2 parking </p>
-                    <p class="card-text"> 861 Sanbarra st Foster City CA 94404</p>
-                    <a href="/all_listings/1" class="btn btn-dark stretched-link">View Property</a>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" src="../static/photos/Foster_1.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">House for Rent</h5>
-                    <p class="card-text"> $1200 </p>
-                    <p class="card-text">2 bed 2 bath 2 parking </p>
-                    <p class="card-text"> 861 Sanbarra st Foster City CA 94404</p>
-                    <a href="/all_listings/1" class="btn btn-dark stretched-link">View Property</a>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
