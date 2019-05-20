@@ -31,15 +31,15 @@ def get_all_listings(price_low, price_high, size_low, size_high, distance_low, d
 
 def price_sort(e):
     # print(e[3])
-    return e[5]
+    return float(e[5])
 
 
 def size_sort(e):
-    return e[6]
+    return float(e[6])
 
 
 def distance_sort(e):
-    return e[7]
+    return float(e[7])
 
 
 def get_listings_by_userid(user_id, sort):
