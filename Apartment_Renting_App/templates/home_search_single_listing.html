@@ -179,15 +179,25 @@
                         </li>
                         <li class="list-group-item">
                          <br>
-                         {% if data.is_available == 1 %}
-                            {% if not current_user.user_id or current_user.user_id != data.landlord_id%}
-                                <form method="POST" action="/send_renting_request">
-                                    <button name="house_id" value={{data.house_id}}>Send renting request</button>
-                                </form>
-                            {% endif %}
+                         {% if current_user.user_id == data.landlord_id %}
+{#                             <button href="/renter_dashboard/view_listings">view listings#}
+{#                                 <a href="/renter_dashboard/view_listings">view listings</a>#}
+{#                             </button>#}
+                             <form method="GET" action="/renter_dashboard/view_listings">
+                                <button>view listings</button>
+                             </form>
                          {% else %}
-                            <h4>Already Sent Request</h4>
+                             {% if data.is_available == 1%}
+                                {% if not current_user.user_id or current_user.user_id != data.landlord_id%}
+                                    <form method="POST" action="/send_renting_request">
+                                        <button name="house_id" value={{data.house_id}}>Send renting request</button>
+                                    </form>
+                                {% endif %}
+                             {% else %}
+                                <h4>Already Sent Request</h4>
+                             {% endif %}
                          {% endif %}
+
                         </li>
                     </ul>
                 </div>
