@@ -185,9 +185,11 @@
 {#                             <button href="/renter_dashboard/view_listings">view listings#}
 {#                                 <a href="/renter_dashboard/view_listings">view listings</a>#}
 {#                             </button>#}
-                             <form method="GET" action="/renter_dashboard/view_listings">
-                                <button>view listings</button>
-                             </form>
+
+                                <button class = "button">
+                                    <a class="icon" href="/landlord_dashboard/view_listings">View Listing</a>
+                                </button>
+
                          {% else %}
                              {% if data.is_available == 1%}
                                 {% if not current_user.user_id or current_user.user_id != data.landlord_id%}
