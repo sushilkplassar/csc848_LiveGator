@@ -10819,3 +10819,24 @@ body {
   background-color: white;
   color: black;
 }
+
+.block {
+  display: block;
+  width: 100%;
+  border: none;
+  color: white;
+  background-color: #2C3E50;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.block:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.forgot_password {
+  float: right;
+}
