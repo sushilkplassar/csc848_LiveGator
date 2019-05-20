@@ -120,6 +120,8 @@ def display_a_house(house_id):
 @listing_endpoints.route('/landlord_dashboard/view_listings', methods=['GET'])
 @login_required
 def get_listings_by_userid():
+    loggedin_user = user.get_user_by_id(current_user.user_id)
+    username = loggedin_user[1]
     # print(current_user.user_id)
     sort = request.args.get("sort", 0)
     # 0: date latest first
@@ -140,7 +142,7 @@ def get_listings_by_userid():
             "create_date": d[18], "approved": d[19], "deleted": d[20]}
         result.append(js)
     # print(result)
-    return render_template("renter_listings.html", data = result)
+    return render_template("renter_listings.html", data = result, username = username)
 
 
 
