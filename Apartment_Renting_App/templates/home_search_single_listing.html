@@ -3,30 +3,30 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <title>Listing Page</title>
+    <title>Listing Page</title>
 
-  <!-- Custom fonts for this template-->
+    <!-- Custom fonts for this template-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
-  <link href="../static/index.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="../static/index.css" rel="stylesheet">
 
-  <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-          height: 80%;
-          height:360px;
-          width:680px;
-      }
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 300px;
+            height:360px;
+            width:680px;
+        }
     </style>
 
 </head>
@@ -117,48 +117,60 @@
 </nav>
 
 
-      <div class="button_wrapper">
-          <button class="button" onclick="goBack()">Go Back</button>
-      </div>
-      <!-- Main Content -->
-      <div id="content">
+<div class="button_wrapper">
+    <button class="button" onclick="goBack()">Go Back</button>
+</div>
+<!-- Main Content -->
+<div id="content">
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <div class="mb-4 my-lg-3">
+        <!-- Page Heading -->
+        <div class="mb-4 my-lg-3">
             <h1 class="h3 mb-0 text-gray-800 text-center">{{data.house_name}}</h1>
-          </div>
-          <div class="mb-4">
+        </div>
+        <div class="mb-4">
             <h1 class="h3 mb-0 text-gray-800 text-center">{{data.number}}  {{data.street}}  {{data.city}}, {{data.state}}, {{data.zipcode}}</h1>
-          </div>
+        </div>
 
-          <div class="d-sm-flex align-items-center justify-content-center mb-4">
+        <div class="d-sm-flex align-items-center justify-content-center mb-4">
             <a href='/all_listings/{{ data.house_id}}'>
                 {% for image in data.image_url %}
                     <img class="card-img" style="height: 360px; width: 420px;" src="{{ url_for('static', filename=image) }}">
                 {% endfor %}
             </a>
             <div class="mx-3 mb-1" id="map"></div>
-          </div>
+            <br>
+        <!-- Radio buttons for Google maps type of transit-->
+            <div class="card-text">
+                <input name="radio" type="radio" value="DRIVING" id="optionone" checked>
+                <label for="changingmode-driving" class="right">Driving</label>
+                <input name="radio" type="radio" value="WALKING" id="optiontwo" checked>
+                <label for="changingmode-driving" class="right">Walking</label>
+                <input name="radio" type="radio" value="BICYCLING" id="optionthree" checked>
+                <label for="changingmode-driving" class="right">Bicycling</label>
+                <input name="radio" type="radio" value="TRANSIT" id="optionfour" checked>
+                <label for="changingmode-driving" class="right">Transit</label>
+            </div>
+        </div>
 
-          <div class="d-sm-flex align-items-center justify-content-center mb-6">
+        <div class="d-sm-flex align-items-center justify-content-center mb-6">
 
-              <div class="card shadow mb-6" style="min-height: 276px; min-width: 400px;">
+            <div class="card shadow mb-6" style="min-height: 276px; min-width: 400px;">
                 <div class="card-header py-3">
                     <h3 class="m-0 font-weight-bold text-primary">About {{data.house_name}}</h3>
                 </div>
                 <div class="card-body">
-                     <h5 class="mx-3 text-gray-800">
-                         {{data.description}}
+                    <h5 class="mx-3 text-gray-800">
+                        {{data.description}}
                     </h5>
                 </div>
-              </div>
+            </div>
 
-              <div class="card shadow mb-4 mx-3" style="max-height: 276px; min-height: 276px; min-width:275px;">
+            <div class="card shadow mb-4 mx-3" style="max-height: 276px; min-height: 276px; min-width:275px;">
                 <div class="card-header py-3">
-                  <h3 class="m-0 font-weight-bold text-primary">Amenities</h3>
+                    <h3 class="m-0 font-weight-bold text-primary">Amenities</h3>
                 </div>
                 <div class="card-body">
                     <ul style="list-style-type: none;">
@@ -169,128 +181,140 @@
                         <li><h5> {{ data.distance }} mi from SFSU</h5></li>
                     </ul>
                 </div>
-              </div>
+            </div>
 
-              <div class="card shadow mb-4 mx-3" style="min-height: 276px; min-width: 275px;">
+            <div class="card shadow mb-4 mx-3" style="min-height: 276px; min-width: 275px;">
                 <div class="card-header py-3">
-                  <h3 class="m-0 font-weight-bold text-primary">Price: ${{data.price}}</h3>
+                    <h3 class="m-0 font-weight-bold text-primary">Price: ${{data.price}}</h3>
                 </div>
                 <div class="card-body">
-                     <ul class="list-group list-group-flush">
+                    <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <h4 class="my-1 mb-1">Contact Landlord {{ data.landlord_id.username}}</h4>
                         </li>
                         <li class="list-group-item">
-                         <br>
-                         {% if current_user.user_id == data.landlord_id %}
-{#                             <button href="/renter_dashboard/view_listings">view listings#}
-{#                                 <a href="/renter_dashboard/view_listings">view listings</a>#}
-{#                             </button>#}
+                            <br>
+                            {% if current_user.user_id == data.landlord_id %}
+                                {#                             <button href="/renter_dashboard/view_listings">view listings#}
+                                {#                                 <a href="/renter_dashboard/view_listings">view listings</a>#}
+                                {#                             </button>#}
 
                                 <button type = "submit">
                                     <a class="icon" onclick="window.location.href='/landlord_dashboard/view_listings';" style="height:50%">View Listing</a>
                                 </button>
 
-                         {% else %}
-                             {% if data.is_available == 1%}
-                                {% if not current_user.user_id or current_user.user_id != data.landlord_id%}
-                                    <form method="POST" action="/send_direct_msg">
-                                        <textarea class = "form-control" type="text" placeholder="Message landlord" name="message"></textarea>
-                                        <button class = "button" name="house_id" value={{data.house_id}}>Contact Landlord</button>
-                                    </form>
+                            {% else %}
+                                {% if data.is_available == 1%}
+                                    {% if not current_user.user_id or current_user.user_id != data.landlord_id%}
+                                        <form method="POST" action="/send_direct_msg">
+                                            <textarea class = "form-control" type="text" placeholder="Message landlord" name="message"></textarea>
+                                            <button class = "button" name="house_id" value={{data.house_id}}>Contact Landlord</button>
+                                        </form>
+                                    {% endif %}
+                                {% else %}
+                                    <h4>Already Sent Request</h4>
                                 {% endif %}
-                             {% else %}
-                                <h4>Already Sent Request</h4>
-                             {% endif %}
-                         {% endif %}
+                            {% endif %}
 
                         </li>
                     </ul>
                 </div>
-              </div>
-
-          </div>
+            </div>
 
         </div>
-        <!-- /.container-fluid -->
-
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; LiveGator 2019</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
 
     </div>
-    <!-- End of Content Wrapper -->
+    <!-- /.container-fluid -->
 
-  </div>
-  <!-- End of Page Wrapper -->
+    <!-- End of Main Content -->
 
-  <script>
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; LiveGator 2019</span>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer -->
 
-     function initMap() {
+</div>
+<!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+<script>
+    function initMap() {
 
 
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: {lat: 37.7219, lng: -122.4782}  // SF.
-      });
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: {lat: 37.7219, lng: -122.4782}  // SF.
+        });
 
 
-      var directionsService = new google.maps.DirectionsService;
-      var directionsDisplay = new google.maps.DirectionsRenderer({
-        draggable: true,
-        map: map,
-        panel: document.getElementById('right-panel')
-      });
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer({
+            draggable: true,
+            map: map,
+            panel: document.getElementById('right-panel')
+        });
 
-      directionsDisplay.addListener('directions_changed', function() {
-        computeTotalDistance(directionsDisplay.getDirections());
-      });
+        directionsDisplay.addListener('directions_changed', function() {
+            computeTotalDistance(directionsDisplay.getDirections());
+        });
 
-      displayRoute('1600 Holloway Dr. San Francisco, CA', '{{data.number}}  {{data.street}}  {{data.city}}, {{data.state}}, {{data.zipcode}}', directionsService,
-          directionsDisplay);
+        displayRoute('1600 Holloway Dr. San Francisco, CA', '{{data.number}}  {{data.street}}  {{data.city}}, {{data.state}}, {{data.zipcode}}', directionsService,
+            directionsDisplay);
+
+        document.getElementsByName('radio').forEach(function(el){
+            el.addEventListener('click', function(){
+                displayRoute('1600 Holloway Dr. San Francisco, CA', '{{data.number}}  {{data.street}}  {{data.city}}, {{data.state}}, {{data.zipcode}}', directionsService,
+                    directionsDisplay);
+            });
+        });
     }
 
     function displayRoute(origin, destination, service, display) {
-      service.route({
-        origin: origin,
-        destination: destination,
-        travelMode: 'DRIVING',
-        avoidTolls: true
-      }, function(response, status) {
-        if (status === 'OK') {
-          display.setDirections(response);
-        } else {
-          alert('Could not display directions due to: ' + status);
-        }
-      });
+        var selectedMode = "";
+        var radio = document.getElementsByName('radio')
+        radio.forEach(function(element){
+            if(element.checked){
+                selectedMode = element.value;
+            }
+        })
+        service.route({
+            origin: origin,
+            destination: destination,
+            travelMode: google.maps.TravelMode[selectedMode],
+            avoidTolls: true
+        }, function(response, status) {
+            if (status === 'OK') {
+                display.setDirections(response);
+            } else {
+                alert('Could not display directions due to: ' + status);
+            }
+        });
     }
 
     function computeTotalDistance(result) {
-      var total = 0;
-      var myroute = result.routes[0];
-      for (var i = 0; i < myroute.legs.length; i++) {
-        total += myroute.legs[i].distance.value;
-      }
-      total = total / 1000;
-      document.getElementById('total').innerHTML = total + ' km';
+        var total = 0;
+        var myroute = result.routes[0];
+        for (var i = 0; i < myroute.legs.length; i++) {
+            total += myroute.legs[i].distance.value;
+        }
+        total = total / 1000;
+        document.getElementById('total').innerHTML = total + ' km';
     }
 
     function goBack() {
         window.history.back();
     }
 
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAj2puVPdBo9PeJ0_XP_m5JCSMuc2XGVOk&callback=initMap&libraries=geometry">
-    </script>
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAj2puVPdBo9PeJ0_XP_m5JCSMuc2XGVOk&callback=initMap&libraries=geometry">
+</script>
 
 </body>
 
