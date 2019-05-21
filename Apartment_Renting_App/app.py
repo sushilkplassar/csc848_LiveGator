@@ -120,6 +120,6 @@ def search():
     # Uncomment the app.run(host='0.0.0.0', port=80, debug=True) -- used for opening ports, and allow connections to website
 
 if __name__ == "__main__":
-    app.run()
-    #app.run(host='0.0.0.0', port=80, debug=True)
+    # app.run()
+    app.run(host='0.0.0.0', port=80, debug=True)
 
