@@ -29,8 +29,8 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="/">LiveGator</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+        <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -48,30 +48,30 @@
             </li>
             <div class="mx-auto">
                 <form class="form-inline my-2 my-lg-0 " method="GET" action = "/search" >
-                                <select name="sort" class="form-control mr-sm-2">
-              <option value=0 {% if sort=='0' %} selected {% endif %}>Newly added first</option>
-              <option value=1 {% if sort=='1' %} selected {% endif %}>Price low to high</option>
-{#              <option value=2>Price high to low</option>#}
-{#              <option value=3>Size low to high</option>#}
-{#              <option value=4>Size high to low</option>#}
-              <option value=5 {% if sort=='5' %} selected {% endif %}>Distance low to high </option>
-{#              <option value=6>Distance high to low</option>#}
-            </select>
+                    <select name="sort" class="form-control mr-sm-2">
+                        <option value=0 {% if sort=='0' %} selected {% endif %}>Newly added first</option>
+                        <option value=1 {% if sort=='1' %} selected {% endif %}>Price low to high</option>
+                        {#              <option value=2>Price high to low</option>#}
+                        {#              <option value=3>Size low to high</option>#}
+                        {#              <option value=4>Size high to low</option>#}
+                        <option value=5 {% if sort=='5' %} selected {% endif %}>Distance low to high </option>
+                        {#              <option value=6>Distance high to low</option>#}
+                    </select>
 
-            <select name="type" class="form-control mr-sm-2">
-              <option value="">Select listing types</option>
-              <option value="Condo" {% if type=='Condo' %} selected {% endif %}>Condos</option>
-              <option value="House" {% if type=='House' %} selected {% endif %}>Houses</option>
-              <option value="Apartment" {% if type=='Apartment' %} selected {% endif %}>Apartments</option>
-              <option value="Townhome" {% if type=='Townhome' %} selected {% endif %}>Townhomes</option>
-              <option value="Single room" {% if type=='Single room' %} selected {% endif %}>Single rooms</option>
-            </select>
-{#                <input type="text" placeholder="Min Price" name="price_low">#}
-{#                <input type="text" placeholder="Max Price" name="price_high">#}
-{#                <input type="text" placeholder="Min Size" name="size_low">#}
-{#                <input type="text" placeholder="Max Size" name="size_high">#}
-{#                <input type="text" placeholder="Min Distance" name="distance_low">#}
-{#                <input type="text" placeholder="Max Distance" name="distance_high">#}
+                    <select name="type" class="form-control mr-sm-2">
+                        <option value="">Select listing types</option>
+                        <option value="Condo" {% if type=='Condo' %} selected {% endif %}>Condos</option>
+                        <option value="House" {% if type=='House' %} selected {% endif %}>Houses</option>
+                        <option value="Apartment" {% if type=='Apartment' %} selected {% endif %}>Apartments</option>
+                        <option value="Townhome" {% if type=='Townhome' %} selected {% endif %}>Townhomes</option>
+                        <option value="Single room" {% if type=='Single room' %} selected {% endif %}>Single rooms</option>
+                    </select>
+                    {#                <input type="text" placeholder="Min Price" name="price_low">#}
+                    {#                <input type="text" placeholder="Max Price" name="price_high">#}
+                    {#                <input type="text" placeholder="Min Size" name="size_low">#}
+                    {#                <input type="text" placeholder="Max Size" name="size_high">#}
+                    {#                <input type="text" placeholder="Min Distance" name="distance_low">#}
+                    {#                <input type="text" placeholder="Max Distance" name="distance_high">#}
                     <input class="form-control mr-sm-2" type="text" size="35" placeholder="Search by listing name, listing type, description, or address" name="search_key" value = {{ key }}>
                     <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
                 </form>
@@ -118,7 +118,7 @@
 
     <div class="icon_card_body">
         <div class="row">
-            <div class="col-sm">
+            {#            <div class="col-sm">
                 <a class="icon" href="/customer_dashboard/view_orders">
                     <p>View Sent Requests</p>
                     <img src="../static/icons/view_all.svg" alt="View All Orders">
@@ -129,34 +129,50 @@
                     <p>View Sent Requests</p>
                     <img src="../static/icons/view_pending.svg" alt="View Pending">
                 </a>
-            </div>
-            <div class="col-sm">
-                <a class="icon" href="/customer_dashboard/view_msg">
-                    <p>View Messages</p>
-                    <img src="../static/icons/view_messages.svg" alt="View Messages">
-                </a>
+            </div>#}
+            <div class="icon_card_body">
+                <div class="row">
+                    <div class="col-sm">
+                        <a class="icon" href="/landlord_dashboard/view_listings">
+                            <img src="../static/icons/All_listings.svg" alt="My Listings">
+                            <p>My Listings</p>
+                        </a>
+                        <br>
+                    </div>
+                    <div class="col-sm">
+                        <a class="icon" href="/customer_dashboard/view_msg">
+                            <img src="../static/icons/view_pending.svg" alt="Sent Messages">
+                            <p>Sent Messages</p>
+                        </a>
+                    </div>
+                    <div class="col-sm">
+                        <a class="icon" href="/landlord_dashboard/view_msg">
+                            <img src="../static/icons/view_messages.svg" alt="Received Messages">
+                            <p>Received Messages</p>
+                        </a>
+                        <br>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- End of Body -->
+        <!-- End of Body -->
 
-<!-- Customer Body -->
-<div class="card shadow align-items-center">
-    <div class="py-3">
-        <h2 class="font-weight-bold text-primary text-center">Landlord Dashboard</h2>
-    </div>
+{#        <!-- Customer Body -->
+        <div class="card shadow align-items-center">
+            <div class="py-3">
+                <h2 class="font-weight-bold text-primary text-center">Landlord Dashboard</h2>
+            </div>
 
-    <div class="icon_card_body">
-        <div class="row">
-        <div class="col-sm">
-            <a class="icon" href="/landlord_dashboard/view_listings">
-                <img src="../static/icons/All_listings.svg" alt="View All Listings">
-                View Listings
-            </a>
-            <br>
-        </div>
-        <div class="col-sm">
+            <div class="icon_card_body">
+                <div class="row">
+                    <div class="col-sm">
+                        <a class="icon" href="/landlord_dashboard/view_listings">
+                            <img src="../static/icons/All_listings.svg" alt="View All Listings">
+                            View Listings
+                        </a>
+                        <br>
+                    </div>
+                    #}{#        <div class="col-sm">
             <a class="icon" href="/landlord_dashboard/view_orders">
                 <img src="../static/icons/view_all.svg" alt="View All Orders">
                 View Orders
@@ -169,18 +185,18 @@
                 View Requests
             </a>
             <br>
+        </div>#}{#
+                    <div class="col-sm">
+                        <a class="icon" href="/landlord_dashboard/view_msg">
+                            <img src="../static/icons/view_messages.svg" alt="View Messages">
+                            View Messages
+                        </a>
+                        <br>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-sm">
-            <a class="icon" href="/landlord_dashboard/view_msg">
-                <img src="../static/icons/view_messages.svg" alt="View Messages">
-                View Messages
-            </a>
-            <br>
-        </div>
-        </div>
-    </div>
-</div>
-<!-- End of Body -->
+        <!-- End of Body -->#}
 
 </body>
 </html>
