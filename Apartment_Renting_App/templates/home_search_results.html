@@ -172,7 +172,7 @@
 
 <!-- Begin Card -->
 
-    {% for item in data %}
+{#    {% for item in data %}
         <ul>
             <div>
 <div class="container">
@@ -197,7 +197,39 @@
         </div>
             </div>
         </ul>
-    {% endfor %}
+    {% endfor %}#}
+{% for item in data %}
+    <ul>
+        <div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row listings">
+                    <div class="col-md-12">
+                        <div class="media">
+                            <a href='/all_listings/{{ item.house_id}}'>
+                                <img class="card-img img-responsive" style="width: 200px; height: 200px;"  src="{{ url_for('static', filename=item.image_url) }}"/>
+
+                                <div class="media-body mx-3">
+                                    <a href='/all_listings/{{ item.house_id}}' class="media-heading">{{item.house_name}}</a>
+                                    <div class="media-heading">{{item.number}}  {{item.street}}  {{item.city}} {{item.state}} {{item.zipcode}}<div>
+                                        <div class="meta"> ${{item.price}} • {{ item.type }} • {{item.size}} sq. ft. </div>
+                                        <p> Layout: {{item.bedroom_count}} bedroom(s), {{item.bathroom_count}} bathroom(s), {{item.parking_count}} parking spot(s) </p>
+                                        <p> Distance from Campus: {{item.distance}} mi.</p>
+                                    </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ul>
+    </center>
+    </li>
+{% endfor %}
 
 </center>
 <!-- js stuff -->
