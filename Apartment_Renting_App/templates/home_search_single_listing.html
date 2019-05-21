@@ -68,7 +68,7 @@
             </select>
 
             <select name="type" class="form-control mr-sm-2">
-              <option value="">Select listing types</option>
+              <option value="">All Categories</option>
               <option value="Condo" {% if type=='Condo' %} selected {% endif %}>Condos</option>
               <option value="House" {% if type=='House' %} selected {% endif %}>Houses</option>
               <option value="Apartment" {% if type=='Apartment' %} selected {% endif %}>Apartments</option>
@@ -119,6 +119,7 @@
 </nav>
 
 
+
       <!-- Main Content -->
       <div id="content">
 
@@ -165,7 +166,7 @@
                         <li><h5>Rooms: {{ data.bedroom_count }}</h5></li>
                         <li><h5>Baths: {{ data.bathroom_count }}</h5></li>
                         <li><h5>Parking: {{ data.parking_count }}</h5></li>
-                        <li><h5>Distance: {{ data.distance }}</h5></li>
+                        <li><h5>Distance: {{ data.distance }} ft</h5></li>
                     </ul>
                 </div>
               </div>
