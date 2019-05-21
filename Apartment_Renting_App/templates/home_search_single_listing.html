@@ -140,11 +140,10 @@
                     <img class="card-img" style="height: 360px; width: 420px;" src="{{ url_for('static', filename=image) }}">
                 {% endfor %}
             </a>
-            <div class="mx-3 mb-1" id="map"></div>
-            <br>
-        <!-- Radio buttons for Google maps type of transit-->
-            <div class="card-text">
-                <input name="radio" type="radio" value="DRIVING" id="optionone" checked>
+            <!-- google maps -->
+            <div class="card card-cascade narrower">
+                <div class="view view-cascade gradient-card-header blue-gradient text-center">
+                    <input name="radio" type="radio" value="DRIVING" id="optionone" checked>
                 <label for="changingmode-driving" class="right">Driving</label>
                 <input name="radio" type="radio" value="WALKING" id="optiontwo" checked>
                 <label for="changingmode-driving" class="right">Walking</label>
@@ -152,7 +151,10 @@
                 <label for="changingmode-driving" class="right">Bicycling</label>
                 <input name="radio" type="radio" value="TRANSIT" id="optionfour" checked>
                 <label for="changingmode-driving" class="right">Transit</label>
+                </div>
+                <div class="mx-3 mb-1" id="map"></div>
             </div>
+            <br>
         </div>
 
         <div class="d-sm-flex align-items-center justify-content-center mb-6">
