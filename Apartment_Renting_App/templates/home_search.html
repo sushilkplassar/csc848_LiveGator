@@ -143,6 +143,7 @@
         </div>
         <div class="card-deck">
             {% for item in data %}
+                {% if loop.index < 5 %}
                 <div class="card">
                     <img class="card-img-top" src="{{ url_for('static', filename=item.image_url) }}" alt="Card image cap" >
                     <div class="card-body">
@@ -154,6 +155,7 @@
                         <a href="/all_listings/{{ item.house_id}}" class="btn btn-dark stretched-link">View Listing</a>
                     </div>
                 </div>
+                {% endif %}
             {% endfor %}
         </div>
     </div>
