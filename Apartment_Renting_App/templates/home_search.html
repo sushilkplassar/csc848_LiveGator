@@ -41,19 +41,40 @@
   </button>
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/landlord_dashboard/add_a_new_listing">
-                    <span>Post</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/customer_dashboard">
-                    <span>My Profile</span></a>
+            {% if role==2 %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/approve_new_listing">
+                        <span>New listings to be approved</span></a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/landlord_dashboard/add_a_new_listing">
+                        <span>Post</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/customer_dashboard">
+                        <span>My Profile</span></a>
 
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/about">
-                    <span>About Us</span></a>
-            </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">
+                        <span>About Us</span></a>
+                </li>
+            {% endif %}
+{#        #}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" href="/landlord_dashboard/add_a_new_listing">#}
+{#                    <span>Post</span></a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" href="/customer_dashboard">#}
+{#                    <span>My Profile</span></a>#}
+{##}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" href="/about">#}
+{#                    <span>About Us</span></a>#}
+{#            </li>#}
             <div class="mx-auto">
                 <form class="form-inline my-2 my-lg-0 " method="GET" action = "/search" >
                                 <select name="sort" class="form-control mr-sm-2">
