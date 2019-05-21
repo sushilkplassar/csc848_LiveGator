@@ -23,72 +23,75 @@
 
 </head>
 
-
-<body id="page-top">
-<p class="text-center" >SFSU Software Engineering Project CSC 648-848, Spring 2019. For Demonstration Only</p>
 <!-- Nav -->
-<nav class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-dark ">
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/">LiveGator</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/search_results">
-                    <span>Browse</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/landlord_dashboard/add_a_new_listing">
-                    <span>Post</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/landlord_dashboard">
-                    <span>Landlord dashboard</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/customer_dashboard">
-                    <span>Customer dashboard</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/about">
-                    <span>About Us</span></a>
-            </li>
-        </ul>
-    </div>
-    <div class="mx-auto order-0">
-        <a class="navbar-brand mx-auto" href="/">LiveGator</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-            {% if current_user.user_id %}
+            {% if role==2 %}
                 <li class="nav-item">
-{#                    <span>Hi {{ username }}!</span>#}
-
-                    <a class="nav-link">
-                    <i class="far fa-user"></i>
-                    <span>Hi {{ username }}!</span> </a>
-
-                </li>
-
-
-
-                <li class="nav-item">
-                    <form method="POST" action="/logout">
-                        <button>logout</button>
-                    </form>
-{#                #}
-{#                <form class="nav-link" method = "POST" href="/logout">#}
-{#                    <i class="far fa-user"></i>#}
-{#                    <span>Logout</span> </form>#}
-
-
+                    <a class="nav-link" href="/approve_new_listing">
+                        <span>New listings to be approved</span></a>
                 </li>
             {% else %}
                 <li class="nav-item">
-                <a class="nav-link" href="/signup">
-                    <i class="far fa-user"></i>
+                    <a class="nav-link" href="/landlord_dashboard/add_a_new_listing">
+                        <span>Post</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/customer_dashboard">
+                        <span>My Profile</span></a>
 
-                    <span>Sign Up</span> </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">
+                        <span>About Us</span></a>
+                </li>
+            {% endif %}
+            <div class="mx-auto">
+                <form class="form-inline my-2 my-lg-0 " method="GET" action = "/search" >
+                    <select name="sort" class="form-control mr-sm-2">
+                        <option value=0 {% if sort=='0' %} selected {% endif %}>Newly added first</option>
+                        <option value=1 {% if sort=='1' %} selected {% endif %}>Price low to high</option>
+                        <option value=5 {% if sort=='5' %} selected {% endif %}>Distance low to high </option>
+
+                    </select>
+
+                    <select name="type" class="form-control mr-sm-2">
+                        <option value="">All Categories</option>
+                        <option value="Condo" {% if type=='Condo' %} selected {% endif %}>Condos</option>
+                        <option value="House" {% if type=='House' %} selected {% endif %}>Houses</option>
+                        <option value="Apartment" {% if type=='Apartment' %} selected {% endif %}>Apartments</option>
+                        <option value="Townhome" {% if type=='Townhome' %} selected {% endif %}>Townhomes</option>
+                        <option value="Single room" {% if type=='Single room' %} selected {% endif %}>Single rooms</option>
+                    </select>
+                    <input class="form-control mr-sm-2" type="text" size="35" placeholder="Search by listing name, listing type, description, or address" name="search_key" value = "{{ key }}">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+            </li>
+        </ul>
+
+        <!-- Log in and signup -->
+
+        <ul class="navbar-nav ml-auto">
+            {% if current_user.user_id %}
+                <li class="nav-item disabled">
+                    <a class="nav-link disabled">Hi {{ username }}!</a>
+                </li>
+
+                <form method="POST" action="/logout">
+                    <button class = "btn btn-outline-light my-2 my-sm-0">Logout</button>
+                </form>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup">
+                        <i class="far fa-user"></i>
+
+                        <span>Sign Up</span> </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/login">
@@ -96,10 +99,10 @@
                         <span >Login</span> </a>
                 </li>
             {% endif %}
+
         </ul>
     </div>
 </nav>
-<!-- End Nav-->
 
 
 
