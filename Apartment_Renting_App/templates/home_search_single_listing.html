@@ -35,57 +35,60 @@
 <disclaimer class="text-center" >SFSU Software Engineering Project CSC 648-848, Spring 2019. For Demonstration Only</disclaimer>
 
 
+
 <!-- Nav -->
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="/">LiveGator</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <span class="navbar-toggler-icon"></span>
+  </button>
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
-            {% if role==2 %}
-                <li class="nav-item">
-                    <a class="nav-link" href="/approve_new_listing">
-                        <span>New listings to be approved</span></a>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="/landlord_dashboard/add_a_new_listing">
-                        <span>Post</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/customer_dashboard">
-                        <span>My Profile</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="/renter_dashboard/add_a_new_listing">
+                    <span>Post</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/customer_dashboard">
+                    <span>My Profile</span></a>
 
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/about">
-                        <span>About Us</span></a>
-                </li>
-            {% endif %}
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">
+                    <span>About Us</span></a>
+            </li>
             <div class="mx-auto">
                 <form class="form-inline my-2 my-lg-0 " method="GET" action = "/search" >
-                    <select name="sort" class="form-control mr-sm-2">
-                        <option value=0 {% if sort=='0' %} selected {% endif %}>Newly added first</option>
-                        <option value=1 {% if sort=='1' %} selected {% endif %}>Price low to high</option>
-                        <option value=5 {% if sort=='5' %} selected {% endif %}>Distance low to high </option>
+                                <select name="sort" class="form-control mr-sm-2">
+              <option value=0 {% if sort=='0' %} selected {% endif %}>Newly added first</option>
+              <option value=1 {% if sort=='1' %} selected {% endif %}>Price low to high</option>
+{#              <option value=2>Price high to low</option>#}
+{#              <option value=3>Size low to high</option>#}
+{#              <option value=4>Size high to low</option>#}
+              <option value=5 {% if sort=='5' %} selected {% endif %}>Distance low to high </option>
+{#              <option value=6>Distance high to low</option>#}
+            </select>
 
-                    </select>
-
-                    <select name="type" class="form-control mr-sm-2">
-                        <option value="">All Categories</option>
-                        <option value="Condo" {% if type=='Condo' %} selected {% endif %}>Condos</option>
-                        <option value="House" {% if type=='House' %} selected {% endif %}>Houses</option>
-                        <option value="Apartment" {% if type=='Apartment' %} selected {% endif %}>Apartments</option>
-                        <option value="Townhome" {% if type=='Townhome' %} selected {% endif %}>Townhomes</option>
-                        <option value="Single room" {% if type=='Single room' %} selected {% endif %}>Single rooms</option>
-                    </select>
+            <select name="type" class="form-control mr-sm-2">
+              <option value="">Select listing types</option>
+              <option value="Condo" {% if type=='Condo' %} selected {% endif %}>Condos</option>
+              <option value="House" {% if type=='House' %} selected {% endif %}>Houses</option>
+              <option value="Apartment" {% if type=='Apartment' %} selected {% endif %}>Apartments</option>
+              <option value="Townhome" {% if type=='Townhome' %} selected {% endif %}>Townhomes</option>
+              <option value="Single room" {% if type=='Single room' %} selected {% endif %}>Single rooms</option>
+            </select>
+{#                <input type="text" placeholder="Min Price" name="price_low">#}
+{#                <input type="text" placeholder="Max Price" name="price_high">#}
+{#                <input type="text" placeholder="Min Size" name="size_low">#}
+{#                <input type="text" placeholder="Max Size" name="size_high">#}
+{#                <input type="text" placeholder="Min Distance" name="distance_low">#}
+{#                <input type="text" placeholder="Max Distance" name="distance_high">#}
                     <input class="form-control mr-sm-2" type="text" size="35" placeholder="Search by listing name, listing type, description, or address" name="search_key" value = "{{ key }}">
                     <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
                 </form>
-            </div>
             </li>
         </ul>
+
 
         <!-- Log in and signup -->
 
