@@ -81,7 +81,7 @@
 {#                <input type="text" placeholder="Max Size" name="size_high">#}
 {#                <input type="text" placeholder="Min Distance" name="distance_low">#}
 {#                <input type="text" placeholder="Max Distance" name="distance_high">#}
-                    <input class="form-control mr-sm-2" type="text" size="35" placeholder="Search by listing name, listing type, description, or address" name="search_key" value = {{ key }}>
+                    <input class="form-control mr-sm-2" type="text" size="35" placeholder="Search by listing name, listing type, description, or address" name="search_key" value = "{{ key }}">
                     <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
@@ -119,7 +119,9 @@
 </nav>
 
 
-
+      <div class="button_wrapper">
+          <button class="button" onclick="goBack()">Go Back</button>
+      </div>
       <!-- Main Content -->
       <div id="content">
 
@@ -283,6 +285,9 @@
       document.getElementById('total').innerHTML = total + ' km';
     }
 
+    function goBack() {
+        window.history.back();
+    }
 
     </script>
     <script async defer
