@@ -35,20 +35,20 @@ def login():
     # print("1", type(user_found))
 
     if user_query is None:
-        print("username not found")
+        # print("username not found")
         flash('Username is invalid' , 'error')
         return redirect('/login')
     # print(user_query)
     hashed_pwd = user_query[2]
     # print(hashed_pwd)
     if not check_password_hash(hashed_pwd, password):
-        print("invalid password")
+        # print("invalid password")
         flash('Password is invalid', 'error')
         return redirect('/login')
     user_found = User(user_query[0])
     login_user(user_found)
     flash('Logged in successfully')
-    print("Logged in successfully")
+    # print("Logged in successfully")
     # print(request.form)
     return redirect('/search_results')
 
