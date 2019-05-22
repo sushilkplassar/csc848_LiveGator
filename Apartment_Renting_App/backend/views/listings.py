@@ -1,3 +1,10 @@
+####################################
+# File name: listings.py           #
+# Description:
+# Author: Team-13                  #
+# Submission: Spring-2019          #
+# Instructor: Dragutin Petkovic    #
+####################################
 import os
 from flask import Flask, Blueprint, abort, request, flash, url_for, redirect, render_template, jsonify, g, current_app
 from flask_login import login_user, logout_user, current_user , login_required, LoginManager
@@ -6,6 +13,7 @@ import uuid
 # from flaskext.couchdb import CouchDBManager, Document, TextField, DateTimeField, ViewField
 from flask_uploads import UploadSet, configure_uploads, IMAGES, UploadNotAllowed
 from ..models import listings
+from backend.models import user
 from ..models.user import User
 
 listing_endpoints = Blueprint('listing_endpoints', __name__)
@@ -77,6 +85,12 @@ def display_all_listings():
 
 @listing_endpoints.route('/all_listings/<house_id>', methods=['GET'])
 def display_a_house(house_id):
+    username = "visitor"
+    try:
+        loggedin_user = user.get_user_by_id(current_user.user_id)
+        username = loggedin_user[1]
+    except:
+        username = "visitor"
     data = listings.get_listing_by_houseid(house_id)
     result = []
 
@@ -99,13 +113,15 @@ def display_a_house(house_id):
             "size": d[6], "distance": d[7], "number": d[8], "street": d[9], "city": d[10], "state": d[11], "zipcode": d[12],
             'image_url': image_array, "bedroom_count": d[14], "bathroom_count": d[15], "parking_count": d[16], "is_available": d[17],
             "create_date": d[18], "approved": d[19], "deleted": d[20]}
-    return render_template("home_search_single_listing.html", data = result)
+    return render_template("home_search_single_listing.html", data = result, username = username)
 
 
 
-@listing_endpoints.route('/renter_dashboard/view_listings', methods=['GET'])
+@listing_endpoints.route('/landlord_dashboard/view_listings', methods=['GET'])
 @login_required
 def get_listings_by_userid():
+    loggedin_user = user.get_user_by_id(current_user.user_id)
+    username = loggedin_user[1]
     # print(current_user.user_id)
     sort = request.args.get("sort", 0)
     # 0: date latest first
@@ -126,15 +142,17 @@ def get_listings_by_userid():
             "create_date": d[18], "approved": d[19], "deleted": d[20]}
         result.append(js)
     # print(result)
-    return render_template("renter_listings.html", data = result)
+    return render_template("renter_listings.html", data = result, username = username)
 
 
 
-@listing_endpoints.route('/renter_dashboard/add_a_new_listing', methods=['GET', 'POST'])
+@listing_endpoints.route('/landlord_dashboard/add_a_new_listing', methods=['GET', 'POST'])
 @login_required
 def add_a_new_listing():
     if request.method == 'GET':
-        return render_template("renter_add_a_new_listing.html")
+        loggedin_user = user.get_user_by_id(current_user.user_id)
+        username = loggedin_user[1]
+        return render_template("renter_add_a_new_listing.html", username = username)
     # try:
     user_id = current_user.user_id
     house_name = request.form.get("house_name", "N/A")
@@ -160,14 +178,14 @@ def add_a_new_listing():
     parking_count = request.form.get("parking_count", "N/A")
     listings.add_a_new_listing(user_id, house_name, type, description, price, size, distance, number, street, city, state, zipcode, image_url, bedroom_count, bathroom_count, parking_count)
 
-    return redirect('/renter_dashboard/view_listings')
+    return redirect('/landlord_dashboard/view_listings')
     # except:
     #     return abort(400)
 
 
-@listing_endpoints.route('/renter_dashboard/delete', methods=['POST'])
+@listing_endpoints.route('/landlord_dashboard/delete', methods=['POST'])
 @login_required
 def delete_a_listing():
     house_id = request.form["house_id"]
     listings.delete_listing(house_id)
-    return redirect('renter_dashboard/view_listings')
+    return redirect('landlord_dashboard/view_listings')

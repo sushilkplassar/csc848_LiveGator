@@ -1,3 +1,10 @@
+####################################
+# File name: DButils.py            #
+# Description:
+# Author: Team-13                  #
+# Submission: Spring-2019          #
+# Instructor: Dragutin Petkovic    #
+####################################
 from ..db.connection import conn
 
 #user
@@ -50,9 +57,9 @@ def get_all_listings(price_low, price_high, size_low, size_high, distance_low, d
     if listing_type is not "":
         sql_str = sql_str + " AND type = '{}'".format(listing_type)
     if key is not "":
-        sql_str = sql_str + " AND house_name LIKE '%{}%'".format(key) + " OR type LIKE '%{}%'".format(
+        sql_str = sql_str + " AND ( house_name LIKE '%{}%'".format(key) + " OR type LIKE '%{}%'".format(
             key) + " OR description LIKE '%{}%'".format(key) + " OR street LIKE '%{}%'".format(
-            key) + " OR city LIKE '%{}%'".format(key) + " OR zipcode LIKE '%{}%'".format(key)
+            key) + " OR city LIKE '%{}%'".format(key) + " OR zipcode LIKE '%{}%')".format(key)
     sql_str = sql_str + " ORDER BY create_date DESC"
     # print(sql_str)
     cur.execute(sql_str)

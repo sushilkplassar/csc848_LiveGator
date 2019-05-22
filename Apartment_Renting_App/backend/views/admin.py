@@ -1,3 +1,10 @@
+####################################
+# File name: admin.py              #
+# Description:
+# Author: Team-13                  #
+# Submission: Spring-2019          #
+# Instructor: Dragutin Petkovic    #
+####################################
 from flask import Flask, Blueprint, request, flash, url_for, redirect, render_template, make_response, jsonify
 from flask_login import login_user, logout_user, current_user , login_required, LoginManager
 

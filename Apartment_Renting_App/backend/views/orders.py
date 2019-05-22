@@ -1,3 +1,10 @@
+####################################
+# File name: orders.py             #
+# Description:
+# Author: Team-13                  #
+# Submission: Spring-2019          #
+# Instructor: Dragutin Petkovic    #
+####################################
 from flask import Flask, Blueprint, request, flash, url_for, redirect, render_template, jsonify, make_response
 from flask_login import login_user, logout_user, current_user , login_required
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -31,7 +38,7 @@ def customer_view_orders():
 
 
 
-@order_endpoints.route('/renter_dashboard/view_orders', methods=['GET'])
+@order_endpoints.route('/landlord_dashboard/view_orders', methods=['GET'])
 @login_required
 def renter_view_orders():
     renter_id = current_user.user_id
@@ -50,7 +57,7 @@ def renter_view_orders():
 
 
 
-@order_endpoints.route('/renter_dashboard/view_pending_request', methods=['GET'])
+@order_endpoints.route('/landlord_dashboard/view_pending_request', methods=['GET'])
 @login_required
 def renter_view_pending_request():
     renter_id = current_user.user_id
@@ -95,7 +102,7 @@ def place_order():
     renter_id = pending_request[1]
     customer_id = pending_request[2]
     orders.place_order(house_id, renter_id, customer_id)
-    return redirect('/renter_dashboard/view_pending_request')
+    return redirect('/landlord_dashboard/view_pending_request')
 
 
 @order_endpoints.route('/delete_request', methods=['POST'])
@@ -105,7 +112,7 @@ def delete_request():
     # renter_id = current_user.user_id
     # customer_id = request.form['customer_id']
     orders.delete_renting_request(house_id)
-    return redirect('/renter_dashboard/view_pending_request')
+    return redirect('/landlord_dashboard/view_pending_request')
 
 
 @order_endpoints.route('/send_renting_request', methods=['POST'])

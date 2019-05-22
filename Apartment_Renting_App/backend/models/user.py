@@ -1,3 +1,10 @@
+####################################
+# File name: user.py               #
+# Description:
+# Author: Team-13                  #
+# Submission: Spring-2019          #
+# Instructor: Dragutin Petkovic    #
+####################################
 from ..db import DButils
 
 

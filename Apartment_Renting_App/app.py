@@ -1,3 +1,11 @@
+####################################
+# File name: app.py                #
+# Description: 
+# Author: Team-13                  #
+# Submission: Spring-2019          #
+# Instructor: Dragutin Petkovic    #
+####################################
+
 import os
 from flask import Flask, session, request, flash, redirect, render_template, url_for
 from flask_login import LoginManager, login_required, current_user
@@ -65,12 +73,27 @@ def home():
     except:
         username = "visitor"
         role = -1
-    return render_template('home_search.html', data = data, current_user = current_user, username = username, role = role, key = search_key, sort = sort, type = type)
+    return render_template('home_search.html', data = data, current_user = current_user,
+                           username = username, role = role, key = search_key, sort = sort, type = type)
 
 @app.route("/search_results", methods=['GET', 'POST'])
 def search_results():
+    search_key = request.args.get("search_key", "")
+    sort = request.args.get("sort", -1)
+    type = request.args.get("type", "")
     data = listings.display_all_listings()
-    return render_template('home_search_results.html', data = data, current_user = current_user, username = User.get_username(current_user))
+    username = "visitor"
+    role = -1
+    try:
+        loggedin_user = user.get_user_by_id(current_user.user_id)
+        username = loggedin_user[1]
+        role = loggedin_user[4]
+    except:
+        username = "visitor"
+        role = -1
+    return render_template('home_search_results.html', data=data, current_user=current_user,
+                           username=username, role = role, key=search_key, sort=sort, type=type)
+
 
 @app.route("/search", methods=['GET', 'POST'])
 def search():
@@ -78,7 +101,18 @@ def search():
     sort = request.args.get("sort", -1)
     type = request.args.get("type", "")
     data = listings.display_all_listings()
-    return render_template('home_search_results.html', data = data, current_user = current_user, username = User.get_username(current_user))
+    username = "visitor"
+    role = -1
+    try:
+        loggedin_user = user.get_user_by_id(current_user.user_id)
+        username = loggedin_user[1]
+        role = loggedin_user[4]
+    except:
+        username = "visitor"
+        role = -1
+    return render_template('home_search_results.html', data=data, current_user=current_user,
+                           username=username, role = role, key=search_key, sort=sort, type=type)
+
 
 
     # when hosting on AWS server
@@ -86,6 +120,6 @@ def search():
     # Uncomment the app.run(host='0.0.0.0', port=80, debug=True) -- used for opening ports, and allow connections to website
 
 if __name__ == "__main__":
-    app.run()
-    #app.run(host='0.0.0.0', port=80, debug=True)
+    # app.run()
+    app.run(host='0.0.0.0', port=80, debug=True)
 

@@ -1,3 +1,10 @@
+####################################
+# File name: message.py            #
+# Description:
+# Author: Team-13                  #
+# Submission: Spring-2019          #
+# Instructor: Dragutin Petkovic    #
+####################################
 from ..db import DButils
 
 def get_msg_by_customerid(customer_id):
