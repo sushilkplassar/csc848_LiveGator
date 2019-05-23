@@ -7,7 +7,7 @@
 ####################################
 import mysql.connector
 
-conn = mysql.connector.connect(host="csc648-dbrestored.covsgblvixwf.us-east-2.rds.amazonaws.com",
+conn = mysql.connector.connect(host="restoreddb-csc648.covsgblvixwf.us-east-2.rds.amazonaws.com",
                                database='CSC648',
                                user='root',
                                password='root1234',
