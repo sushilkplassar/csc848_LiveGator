@@ -6,11 +6,12 @@
 # Instructor: Dragutin Petkovic    #
 ####################################
 import mysql.connector
-conn = mysql.connector.connect(host = "csc648-dbinstance.covsgblvixwf.us-east-2.rds.amazonaws.com",
-                            database = 'CSC648',
-                            user = 'root',
-                            password = 'root1234',
-                            auth_plugin='mysql_native_password')
+
+conn = mysql.connector.connect(host="restoreddb-csc648.covsgblvixwf.us-east-2.rds.amazonaws.com",
+                               database='CSC648',
+                               user='root',
+                               password='root1234',
+                               auth_plugin='mysql_native_password')
 cursor = conn.cursor()
 
 #
@@ -20,7 +21,3 @@ cursor = conn.cursor()
 #                             password = 'Derectorjin1',
 #                             auth_plugin='mysql_native_password')
 # cursor = conn.cursor()
-
-
-
-
